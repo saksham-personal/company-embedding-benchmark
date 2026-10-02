@@ -1,0 +1,7 @@
+{
+  "status": "skipped",
+  "kind": "benchmark_not_run",
+  "variant_id": "nomic-embed-text-v1.5__gguf-q4_k_m__768d",
+  "reason": "user_deferred_to_vdi",
+  "error": "Full current conformance and retrieval are deferred to the VDI following local Windows resource failures."
+}

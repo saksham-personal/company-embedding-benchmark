@@ -1,0 +1,7 @@
+{
+  "status": "skipped",
+  "kind": "requested_family_not_available",
+  "variant_id": "embeddinggemma-300m (no authorized artifact)",
+  "reason": "upstream_access_gated",
+  "error": "Upstream authorization unavailable; no runnable or redistributed Gemma artifact."
+}

@@ -1,0 +1,56 @@
+{
+  "kind": "development_scope",
+  "source_commit": "20db53394e02a2436c36236bef326cea7697c597",
+  "machine_role": "development",
+  "threads": 4,
+  "user_direction": "Finish the kit; run larger models on the VDI",
+  "local_baseline_families": [
+    "BGE",
+    "E5",
+    "GTE"
+  ],
+  "deferred_families": [
+    "Arctic",
+    "Qwen",
+    "Voyage",
+    "Nomic"
+  ],
+  "gated_family": "EmbeddingGemma 300M; upstream authorization unavailable",
+  "earlier_large_reference_failures": [
+    {
+      "error": "The paging file is too small for this operation to complete. (os error 1455)",
+      "error_type": "OSError",
+      "status": "failed",
+      "variant_id": "arctic-embed-m-v2__pytorch-fp32__768d"
+    },
+    {
+      "error": "The paging file is too small for this operation to complete. (os error 1455)",
+      "error_type": "OSError",
+      "status": "failed",
+      "variant_id": "arctic-embed-m-v2__pytorch-fp32__256d"
+    },
+    {
+      "error": "",
+      "error_type": "ChildProcessError",
+      "exit_code": 3221225477,
+      "status": "failed",
+      "variant_id": "qwen3-embedding-0.6b__pytorch-reference__1024d"
+    },
+    {
+      "error": "",
+      "error_type": "ChildProcessError",
+      "exit_code": 3221225477,
+      "status": "failed",
+      "variant_id": "qwen3-embedding-0.6b__pytorch-reference__768d"
+    }
+  ],
+  "failure_interpretation": "Arctic reported Windows paging-file exhaustion (1455). Qwen exited 0xC0000005 without a trace; commit pressure was observed but causality is not established. Both full BGE SciFact retrieval runs failed with memory allocation errors. The runner also retained full token buffers behind CLS views; that defect was corrected in 4bfd911 with exact-value/ownership regressions. Full SciFact and larger-family runs remain deferred to the VDI.",
+  "postfix_commit": "4bfd911",
+  "historical_quality_policy": "Retain the 18 completed quality measurements and their original pre-fix source hashes. The copy fix preserves values; those old receipts cannot authorize current-code execution. Post-fix sampled conformance and speed have separate provenance.",
+  "system_memory_snapshot_GiB_approx": {
+    "physical": 15.37,
+    "commit_limit": 25.37,
+    "committed": 23.1
+  },
+  "review": "GPT-6 Luna cleared the baseline implementation/evidence and independently reviewed the memory fix. Runtime scope is limited to the retained measured results; target-VDI validation remains pending."
+}

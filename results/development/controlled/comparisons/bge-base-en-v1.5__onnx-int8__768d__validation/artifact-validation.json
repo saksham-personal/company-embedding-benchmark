@@ -1,0 +1,204 @@
+{
+  "fingerprint": "963ab40c2635892126a0973a9e0b12b4422744359dd1d492be6fed19d96f84fa",
+  "kind": "artifact_validation",
+  "provenance": {
+    "catalog_digest": "34846e2e6e460a0b7c1d322131329e5b4f545c03dd39fb66f09709fc3d154c3b",
+    "command": [
+      "C:\\Users\\eskay\\Documents\\Codex\\2026-09-30\\w\\outputs\\company-embedding-benchmark\\scripts\\validate_artifacts.py",
+      "--project-root",
+      "C:\\Users\\eskay\\Documents\\Codex\\2026-09-30\\w\\outputs\\company-embedding-benchmark",
+      "--model-root",
+      "E:\\Codex\\company-embedding-benchmark\\models",
+      "--dataset",
+      "E:\\Codex\\company-embedding-benchmark\\data\\controlled-v1",
+      "--threads",
+      "4",
+      "--machine-role",
+      "development",
+      "--variant",
+      "bge-base-en-v1.5__pytorch-fp32__768d",
+      "--variant",
+      "bge-base-en-v1.5__onnx-int8__768d",
+      "--output-dir",
+      "E:\\Codex\\company-embedding-benchmark\\development-results\\controlled\\comparisons\\bge-base-en-v1.5__onnx-int8__768d__validation",
+      "--batch-size",
+      "8"
+    ],
+    "dataset_digest": "5d7856166294a0d99ba4084effe9bb0453c4a236f89b0a0a7f1199f841934480",
+    "dataset_id": "controlled-company-screening-v1",
+    "generated_at": "2026-10-02T15:18:32.173910+00:00",
+    "git_commit": "20db53394e02a2436c36236bef326cea7697c597",
+    "git_dirty": true,
+    "hardware": {
+      "captured_at": "2026-10-02T15:18:32.007225+00:00",
+      "cpu": "AMD Ryzen 5 4600H with Radeon Graphics",
+      "cpu_flags": null,
+      "disk": {
+        "free_bytes": 5400199168,
+        "root": "C:\\",
+        "total_bytes": 242872217600
+      },
+      "logical_cores": 12,
+      "machine": "AMD64",
+      "memory": {
+        "available_bytes": 5632831488,
+        "total_bytes": 16505966592
+      },
+      "onnxruntime": {
+        "providers": [
+          "AzureExecutionProvider",
+          "CPUExecutionProvider"
+        ],
+        "version": "1.24.4"
+      },
+      "os": "Windows-11-10.0.26200-SP0",
+      "physical_cores": 6,
+      "python": {
+        "executable": "E:\\Codex\\company-embedding-benchmark\\.venv\\Scripts\\python.exe",
+        "version": "3.12.10 (main, Apr  9 2025, 04:06:22) [MSC v.1943 64 bit (AMD64)]"
+      },
+      "runtime_cpu_features": [
+        "avx",
+        "avx2",
+        "f16c",
+        "fma3"
+      ],
+      "thread_environment": {
+        "MKL_NUM_THREADS": "4",
+        "OMP_NUM_THREADS": "4",
+        "OPENBLAS_NUM_THREADS": "4"
+      },
+      "torch": {
+        "cuda_available": false,
+        "threads": 4,
+        "version": "2.9.1+cpu"
+      },
+      "virtualization_model": "82B5"
+    },
+    "hardware_id": "7d1956754d93deccb19ff2f4cb4ac7f209173169c63154aad8510048195997e9",
+    "hostname": "LAPTOP-N2B4FQ1G",
+    "machine_role": "development",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10 (main, Apr  9 2025, 04:06:22) [MSC v.1943 64 bit (AMD64)]",
+    "seed": 20261002,
+    "source_digest": "acdcf68972da7b262db3b664ca2088f36958b5930379b289a5fe11c81548ebd1",
+    "thread_environment": {
+      "MKL_NUM_THREADS": "4",
+      "NUMEXPR_NUM_THREADS": null,
+      "OMP_NUM_THREADS": "4",
+      "OPENBLAS_NUM_THREADS": "4"
+    }
+  },
+  "status": "measured",
+  "variants": [
+    {
+      "batch_variation_warning": false,
+      "deterministic": true,
+      "dimension": 768,
+      "document_batch_size": 8,
+      "document_count": 100,
+      "document_similarity": {
+        "cosine": {
+          "mean": 1.0,
+          "median": 1.0,
+          "minimum": 0.9999998211860657,
+          "p5": 0.9999998807907104
+        },
+        "passed": true,
+        "sample_count": 100,
+        "thresholds": {
+          "minimum": 0.98,
+          "p5": 0.99
+        }
+      },
+      "fingerprint": "963ab40c2635892126a0973a9e0b12b4422744359dd1d492be6fed19d96f84fa",
+      "instruction": null,
+      "max_tokens": 512,
+      "padding_consistency_cosine_min": 1.0,
+      "padding_gate": "cosine_at_least_0.999",
+      "query_batch_size": 1,
+      "query_count": 100,
+      "query_similarity": {
+        "cosine": {
+          "mean": 1.0,
+          "median": 1.0,
+          "minimum": 0.9999998807907104,
+          "p5": 0.9999998807907104
+        },
+        "passed": true,
+        "sample_count": 100,
+        "thresholds": {
+          "minimum": 0.98,
+          "p5": 0.99
+        }
+      },
+      "reference": "bge-base-en-v1.5__pytorch-fp32__768d",
+      "runtime": {
+        "backend": "transformers",
+        "device": "cpu",
+        "inter_op_threads": 1,
+        "parameter_dtype": "torch.float32",
+        "threads": 4,
+        "torch": "2.9.1+cpu"
+      },
+      "scope": "sampled short descriptions and screening queries; full-length behavior requires context experiments",
+      "status": "passed",
+      "variant_id": "bge-base-en-v1.5__pytorch-fp32__768d"
+    },
+    {
+      "batch_variation_warning": true,
+      "deterministic": true,
+      "dimension": 768,
+      "document_batch_size": 8,
+      "document_count": 100,
+      "document_similarity": {
+        "cosine": {
+          "mean": 0.9810024499893188,
+          "median": 0.9811267852783203,
+          "minimum": 0.9729397892951965,
+          "p5": 0.9768322706222534
+        },
+        "passed": true,
+        "sample_count": 100,
+        "thresholds": {
+          "minimum": 0.8,
+          "p5": 0.9
+        }
+      },
+      "fingerprint": "963ab40c2635892126a0973a9e0b12b4422744359dd1d492be6fed19d96f84fa",
+      "instruction": null,
+      "max_tokens": 512,
+      "padding_consistency_cosine_min": 0.9909526109695435,
+      "padding_gate": "diagnostic_only_for_quantized",
+      "query_batch_size": 1,
+      "query_count": 100,
+      "query_similarity": {
+        "cosine": {
+          "mean": 0.9731518626213074,
+          "median": 0.9734551906585693,
+          "minimum": 0.9629249572753906,
+          "p5": 0.967189371585846
+        },
+        "passed": true,
+        "sample_count": 100,
+        "thresholds": {
+          "minimum": 0.8,
+          "p5": 0.9
+        }
+      },
+      "reference": "bge-base-en-v1.5__pytorch-fp32__768d",
+      "runtime": {
+        "backend": "onnxruntime",
+        "inter_op_threads": 1,
+        "providers": [
+          "CPUExecutionProvider"
+        ],
+        "threads": 4,
+        "version": "1.24.4"
+      },
+      "scope": "sampled short descriptions and screening queries; full-length behavior requires context experiments",
+      "status": "passed",
+      "variant_id": "bge-base-en-v1.5__onnx-int8__768d"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "error": "artifact e5-base-v2-onnx-int8-avx512-vnni requires unavailable CPU/OS features: ['avx512_vnni', 'avx512f']",
+  "kind": "benchmark_not_run",
+  "reason": "unsupported_hardware",
+  "status": "skipped",
+  "variant_id": "e5-base-v2__onnx-int8__768d"
+}

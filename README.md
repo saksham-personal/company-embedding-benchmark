@@ -35,6 +35,8 @@ The public pilot defaults to sparse **description + keywords**. Description-only
 
 ## Setup on the VDI
 
+You can also download the complete [kit ZIP](https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/company-embedding-benchmark-kit-v1.zip), verify it against [KIT_SHA256.txt](https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/KIT_SHA256.txt), and extract its `company-embedding-benchmark` folder. It contains the code, public company pilot, runbook and development reports. Model packages and the portable Python bundle are separate release assets.
+
 Clone this repository, then choose an accessible work directory on a drive with space.
 
 ~~~powershell
@@ -69,6 +71,10 @@ $models = Join-Path $work 'models'
 ~~~
 
 `uv.lock` pins the environment and explicitly selects CPU PyTorch. The portable wheel bundle supports Windows x64/Python 3.12; use the uv route for other supported environments. The included GGUF server package is Windows x64.
+
+### Fully disconnected machine
+
+Prepare the kit, portable Python ZIP, verified model directories, runtime archive and imported SciFact data while GitHub is accessible, then transfer them to the destination. Create its Python environment from the local ZIP; retain all model/runtime licenses. Model inference and the controlled dataset generator run offline. The [disconnected transfer steps](reports/VDI_AGENT_GUIDE.md#fully-disconnected-transfer) identify the folders to carry over and the commands to verify them. GitHub itself requires a connection; it is the distribution source before transfer.
 
 ## Download models and data
 
@@ -128,6 +134,8 @@ Qwen uses its official instruction template with a fixed company-screening instr
 Raw JSON records source/configuration/dataset hashes, actual runtime settings, hardware identity, Git state and commands. CSV and Markdown/HTML reports preserve measured values. Rows lacking a passed validation receipt are exploratory. Compare rows only when dataset, representation, machine, threads and source/configuration identities match.
 
 The report defers a production recommendation until complete VDI measurements and representative company judgements exist. Personal-PC results in this repository are development evidence. Quantization is not called effectively lossless from cosine similarity alone.
+
+Delivered local evidence contains 16 public-pilot quality rows and a controlled BGE FP32/INT8 pair. Larger families and full SciFact retrieval are assigned to the VDI. A token-buffer retention defect was fixed and verified before packaging; historical quality records retain their original source hashes. The controlled BGE INT8 comparison failed the chosen one-percentage-point quality loss budget. See the validation record for details.
 
 - [Executed local validation](reports/LOCAL_VALIDATION.md)
 - [VDI agent runbook](reports/VDI_AGENT_GUIDE.md)

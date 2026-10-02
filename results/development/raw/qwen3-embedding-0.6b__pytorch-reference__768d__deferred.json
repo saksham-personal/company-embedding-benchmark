@@ -1,0 +1,7 @@
+{
+  "status": "skipped",
+  "kind": "benchmark_not_run",
+  "variant_id": "qwen3-embedding-0.6b__pytorch-reference__768d",
+  "reason": "user_deferred_to_vdi",
+  "error": "Full current conformance and retrieval are deferred to the VDI following local Windows resource failures."
+}

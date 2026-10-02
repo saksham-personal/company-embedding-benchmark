@@ -1,0 +1,94 @@
+{
+  "status": "failed",
+  "kind": "quality_run_failed",
+  "variant_id": "bge-base-en-v1.5__onnx-int8__768d",
+  "dataset_id": "beir-scifact",
+  "parent_run_provenance": {
+    "catalog_digest": "34846e2e6e460a0b7c1d322131329e5b4f545c03dd39fb66f09709fc3d154c3b",
+    "command": [
+      "C:\\Users\\eskay\\Documents\\Codex\\2026-09-30\\w\\outputs\\company-embedding-benchmark\\scripts\\run_all.py",
+      "--project-root",
+      "C:\\Users\\eskay\\Documents\\Codex\\2026-09-30\\w\\outputs\\company-embedding-benchmark",
+      "--model-root",
+      "E:\\Codex\\company-embedding-benchmark\\models",
+      "--threads",
+      "4",
+      "--machine-role",
+      "development",
+      "--dataset",
+      "E:\\Codex\\company-embedding-benchmark\\data\\scifact-github",
+      "--variant",
+      "bge-base-en-v1.5__pytorch-fp32__768d",
+      "--variant",
+      "bge-base-en-v1.5__onnx-int8__768d",
+      "--quality-only",
+      "--output-dir",
+      "E:\\Codex\\company-embedding-benchmark\\development-results\\scifact"
+    ],
+    "dataset_digest": "af991646c5e8284e8ee890ef7a038d9306259cd51f90ddb3a78447d9c6256b61",
+    "dataset_id": "beir-scifact",
+    "generated_at": "2026-10-02T15:46:22.196147+00:00",
+    "git_commit": "20db53394e02a2436c36236bef326cea7697c597",
+    "git_dirty": true,
+    "hardware": {
+      "captured_at": "2026-10-02T15:46:22.005131+00:00",
+      "cpu": "AMD Ryzen 5 4600H with Radeon Graphics",
+      "cpu_flags": null,
+      "disk": {
+        "free_bytes": 5407961088,
+        "root": "C:\\",
+        "total_bytes": 242872217600
+      },
+      "logical_cores": 12,
+      "machine": "AMD64",
+      "memory": {
+        "available_bytes": 5302824960,
+        "total_bytes": 16505966592
+      },
+      "onnxruntime": {
+        "providers": [
+          "AzureExecutionProvider",
+          "CPUExecutionProvider"
+        ],
+        "version": "1.24.4"
+      },
+      "os": "Windows-11-10.0.26200-SP0",
+      "physical_cores": 6,
+      "python": {
+        "executable": "E:\\Codex\\company-embedding-benchmark\\.venv\\Scripts\\python.exe",
+        "version": "3.12.10 (main, Apr  9 2025, 04:06:22) [MSC v.1943 64 bit (AMD64)]"
+      },
+      "runtime_cpu_features": [
+        "avx",
+        "avx2",
+        "f16c",
+        "fma3"
+      ],
+      "thread_environment": {
+        "MKL_NUM_THREADS": "4",
+        "OMP_NUM_THREADS": "4",
+        "OPENBLAS_NUM_THREADS": "4"
+      },
+      "torch": {
+        "cuda_available": false,
+        "threads": 4,
+        "version": "2.9.1+cpu"
+      },
+      "virtualization_model": "82B5"
+    },
+    "hardware_id": "7d1956754d93deccb19ff2f4cb4ac7f209173169c63154aad8510048195997e9",
+    "hostname": "LAPTOP-N2B4FQ1G",
+    "machine_role": "development",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10 (main, Apr  9 2025, 04:06:22) [MSC v.1943 64 bit (AMD64)]",
+    "seed": 20261002,
+    "source_digest": "acdcf68972da7b262db3b664ca2088f36958b5930379b289a5fe11c81548ebd1",
+    "thread_environment": {
+      "MKL_NUM_THREADS": "4",
+      "NUMEXPR_NUM_THREADS": null,
+      "OMP_NUM_THREADS": "4",
+      "OPENBLAS_NUM_THREADS": "4"
+    }
+  },
+  "error": "Full SciFact retrieval failed with a memory allocation error before the CLS buffer-copy fix; rerun on VDI. No score was produced."
+}

@@ -1,0 +1,2 @@
+reference,candidate,dataset_id,machine_role,representation,recall@50_delta,recall@100_delta,ndcg@20_delta,embedding_cosine_mean,embedding_cosine_p5,quality_delta_gate
+bge-base-en-v1.5__pytorch-fp32__768d,bge-base-en-v1.5__onnx-int8__768d,controlled-company-screening-v1,development,description_keywords,-0.011458333333333348,-0.009375000000000022,-0.011029476247493841,0.9810024499893188,0.9768322706222534,False

@@ -1,7 +1,9 @@
 {
   "repository": "saksham-personal/company-embedding-benchmark",
   "release": "assets-v1",
-  "checked": 21,
+  "generated_at": "2026-10-02T15:07:32.025726+00:00",
+  "verification": "GitHub server-computed digest against pinned manifests; runtime, environment and license sizes checked",
+  "checked": 23,
   "failures": [],
   "assets": [
     {
@@ -105,6 +107,12 @@
       "size": 548080055,
       "digest": "sha256:4a083e45d8d64ffcc9627e185589fbf1e862ab151c739af7d76968bf71644029",
       "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/nomic-embed-text-v1.5-pytorch-fp32.zip"
+    },
+    {
+      "name": "offline-cpu-python312-windows-x64.zip",
+      "size": 267828140,
+      "digest": "sha256:aedee9d88d80c49b246f68311371d0c54f1a531e501f96600092e802d6c4887a",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/offline-cpu-python312-windows-x64.zip"
     },
     {
       "name": "qwen3-embedding-0.6b-onnx-int8.zip",

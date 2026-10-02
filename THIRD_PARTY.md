@@ -29,7 +29,7 @@ The Nomic Q4_K_M GGUF comes from the [official Nomic GGUF repository](https://hu
 The Windows CPU server is the [official llama.cpp b11146 release](https://github.com/ggml-org/llama.cpp/releases/tag/b11146).
 
 [BEIR SciFact](https://github.com/beir-cellar/beir) uses the official test corpus
-and qrels. [SciFact's license](https://github.com/allenai/scifact/blob/master/LICENSE)
+and qrels. [SciFact's license](https://github.com/allenai/scifact/blob/master/LICENSE.md)
 specifies CC BY 4.0 for claims/evidence and ODC-By 1.0 for abstracts. The release
 also hosts the source license file. Preserve the original corpus and qrels;
 cite the BEIR and SciFact projects when publishing benchmark results.

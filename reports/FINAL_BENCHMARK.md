@@ -1,0 +1,93 @@
+# Embedding Benchmark Results
+
+> Generated only from measured result JSON. Tables retain machine, dataset and validation status.
+
+## Delivered development scope
+
+Completed: 16 public-pilot quality rows and one BGE reference/INT8 controlled pair (18 quality rows total). Short BGE CPU diagnostics use the corrected buffer-copy implementation; historical quality rows retain their original source hashes. Full SciFact retrieval failed before that fix and remains deferred to the VDI, alongside Arctic, Qwen, Voyage and Nomic full runs. See [LOCAL_VALIDATION.md](LOCAL_VALIDATION.md) for provenance, failures and exact limits.
+
+## Decision status
+
+A production model recommendation is deferred. An individual VDI row cannot establish a winner. Select a deployment only after complete, comparable VDI quality and performance runs, passed reference gates, and representative company judgements. This public company pilot alone is insufficient.
+
+## Company and public retrieval quality
+
+| Variant | Dataset | Representation | Dim | Machine | Validation | Recall meaning | R@25 | R@50 | R@100 | Candidate R@25 | Candidate R@50 | Candidate R@100 | nDCG@10 | nDCG@20 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| bge-base-en-v1.5__onnx-int8__768d | controlled-company-screening-v1 | description_keywords | 768 | development | passed | recall | 0.9385 | 0.9604 | 0.9781 |  |  |  | 0.8311 | 0.8825 |
+| bge-base-en-v1.5__pytorch-fp32__768d | controlled-company-screening-v1 | description_keywords | 768 | development | passed | recall | 0.9396 | 0.9719 | 0.9875 |  |  |  | 0.8477 | 0.8935 |
+| bge-base-en-v1.5__onnx-fp32__768d | public-company-screening-v1 | description_keywords | 768 | development | passed | strict known-positive | 1.0000 | 1.0000 | 1.0000 | 0.9934 | 1.0000 | 1.0000 | 0.9393 | 0.9468 |
+| bge-base-en-v1.5__onnx-fp32__768d | public-company-screening-v1 | description_only | 768 | development | passed | strict known-positive | 1.0000 | 1.0000 | 1.0000 | 0.9934 | 1.0000 | 1.0000 | 0.9419 | 0.9465 |
+| bge-base-en-v1.5__onnx-int8__768d | public-company-screening-v1 | description_keywords | 768 | development | passed | strict known-positive | 1.0000 | 1.0000 | 1.0000 | 0.9934 | 1.0000 | 1.0000 | 0.9357 | 0.9400 |
+| bge-base-en-v1.5__onnx-int8__768d | public-company-screening-v1 | description_only | 768 | development | passed | strict known-positive | 1.0000 | 1.0000 | 1.0000 | 0.9934 | 1.0000 | 1.0000 | 0.9348 | 0.9408 |
+| bge-base-en-v1.5__pytorch-fp32__768d | public-company-screening-v1 | description_keywords | 768 | development | passed | strict known-positive | 1.0000 | 1.0000 | 1.0000 | 0.9934 | 1.0000 | 1.0000 | 0.9393 | 0.9468 |
+| bge-base-en-v1.5__pytorch-fp32__768d | public-company-screening-v1 | description_only | 768 | development | passed | strict known-positive | 1.0000 | 1.0000 | 1.0000 | 0.9934 | 1.0000 | 1.0000 | 0.9419 | 0.9465 |
+| e5-base-v2__onnx-fp32__768d | public-company-screening-v1 | description_keywords | 768 | development | passed | strict known-positive | 1.0000 | 1.0000 | 1.0000 | 0.9934 | 1.0000 | 1.0000 | 0.9477 | 0.9514 |
+| e5-base-v2__onnx-fp32__768d | public-company-screening-v1 | description_only | 768 | development | passed | strict known-positive | 1.0000 | 1.0000 | 1.0000 | 0.9934 | 1.0000 | 1.0000 | 0.9477 | 0.9556 |
+| e5-base-v2__pytorch-fp32__768d | public-company-screening-v1 | description_keywords | 768 | development | passed | strict known-positive | 1.0000 | 1.0000 | 1.0000 | 0.9934 | 1.0000 | 1.0000 | 0.9477 | 0.9514 |
+| e5-base-v2__pytorch-fp32__768d | public-company-screening-v1 | description_only | 768 | development | passed | strict known-positive | 1.0000 | 1.0000 | 1.0000 | 0.9934 | 1.0000 | 1.0000 | 0.9477 | 0.9556 |
+| gte-base-en-v1.5__onnx-fp32__768d | public-company-screening-v1 | description_keywords | 768 | development | passed | strict known-positive | 1.0000 | 1.0000 | 1.0000 | 0.9912 | 1.0000 | 1.0000 | 0.9257 | 0.9312 |
+| gte-base-en-v1.5__onnx-fp32__768d | public-company-screening-v1 | description_only | 768 | development | passed | strict known-positive | 1.0000 | 1.0000 | 1.0000 | 0.9934 | 1.0000 | 1.0000 | 0.9018 | 0.9178 |
+| gte-base-en-v1.5__onnx-int8__768d | public-company-screening-v1 | description_keywords | 768 | development | passed | strict known-positive | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 0.9342 | 0.9404 |
+| gte-base-en-v1.5__onnx-int8__768d | public-company-screening-v1 | description_only | 768 | development | passed | strict known-positive | 1.0000 | 1.0000 | 1.0000 | 0.9868 | 1.0000 | 1.0000 | 0.9024 | 0.9159 |
+| gte-base-en-v1.5__pytorch-fp32__768d | public-company-screening-v1 | description_keywords | 768 | development | passed | strict known-positive | 1.0000 | 1.0000 | 1.0000 | 0.9912 | 1.0000 | 1.0000 | 0.9257 | 0.9312 |
+| gte-base-en-v1.5__pytorch-fp32__768d | public-company-screening-v1 | description_only | 768 | development | passed | strict known-positive | 1.0000 | 1.0000 | 1.0000 | 0.9934 | 1.0000 | 1.0000 | 0.9018 | 0.9178 |
+
+Source-backed R@K uses direct relevance-2 positives on eligible queries; candidate recall also includes partial relevance-1 matches. Exclusion probes without strict positives are omitted from strict recall denominators. Recall@100 on the 130-company pilot is especially weak evidence.
+
+## CPU performance
+
+| Variant | Machine | Token bucket | Threads | Batch | Rounds | Docs/s | Query p50 ms | Query p95 ms | Sampled peak RSS |
+|---|---|---|---|---|---|---|---|---|---|
+| bge-base-en-v1.5__onnx-int8__768d | development | 1-64 | 4 | 1 | 3 | 23.4359 | 25.3962 | 37.0127 | 525537280 |
+| bge-base-en-v1.5__onnx-int8__768d | development | 1-64 | 4 | 8 | 3 | 27.2392 | 25.3962 | 37.0127 | 550944768 |
+| bge-base-en-v1.5__onnx-int8__768d | development | 1-64 | 4 | 32 | 3 | 24.7210 | 25.3962 | 37.0127 | 736940032 |
+| bge-base-en-v1.5__onnx-int8__768d | development | 1-64 | 4 | 64 | 3 | 25.4757 | 25.3962 | 37.0127 | 960876544 |
+| bge-base-en-v1.5__pytorch-fp32__768d | development | 1-64 | 4 | 1 | 3 | 8.8867 | 86.9901 | 94.9497 | 757485568 |
+| bge-base-en-v1.5__pytorch-fp32__768d | development | 1-64 | 4 | 8 | 3 | 15.9063 | 86.9901 | 94.9497 | 784191488 |
+| bge-base-en-v1.5__pytorch-fp32__768d | development | 1-64 | 4 | 32 | 3 | 16.2799 | 86.9901 | 94.9497 | 863412224 |
+| bge-base-en-v1.5__pytorch-fp32__768d | development | 1-64 | 4 | 64 | 3 | 15.7482 | 86.9901 | 94.9497 | 960532480 |
+
+Fresh-process load times do not flush the filesystem cache. Memory sums parent and server RSS at 20 ms intervals. GGUF requests are serialized; batch rows measure groups of sequential requests. Short development runs cannot establish stable target-VDI latency percentiles.
+
+## Paired artifact comparisons
+
+| Reference | Candidate | Dataset | Representation | R@50 delta | R@100 delta | nDCG@20 delta | Cosine p5 | Quality delta gate |
+|---|---|---|---|---|---|---|---|---|
+| bge-base-en-v1.5__pytorch-fp32__768d | bge-base-en-v1.5__onnx-int8__768d | controlled-company-screening-v1 | description_keywords | -0.0115 | -0.0094 | -0.0110 | 0.9768 | False |
+
+The one-point quality delta gate does not alone imply effectively lossless quantization. It must also have a measured CPU/storage benefit and hold on representative data.
+
+## Failed or skipped checks
+
+| Variant | Status | Reason |
+|---|---|---|
+| e5-base-v2__onnx-int8__768d | skipped | artifact e5-base-v2-onnx-int8-avx512-vnni requires unavailable CPU/OS features: ['avx512_vnni', 'avx512f'] |
+| e5-base-v2__onnx-int8__768d | skipped | artifact e5-base-v2-onnx-int8-avx512-vnni requires unavailable CPU/OS features: ['avx512_vnni', 'avx512f'] |
+|  | failed | command failed with exit code 1 |
+| e5-base-v2__onnx-int8__768d | skipped | artifact e5-base-v2-onnx-int8-avx512-vnni requires unavailable CPU/OS features: ['avx512_vnni', 'avx512f'] |
+| arctic-embed-m-v2__onnx-fp32__768d | skipped | Full current conformance and retrieval are deferred to the VDI following local Windows resource failures. |
+| arctic-embed-m-v2__onnx-int8__256d | skipped | Full current conformance and retrieval are deferred to the VDI following local Windows resource failures. |
+| arctic-embed-m-v2__onnx-int8__768d | skipped | Full current conformance and retrieval are deferred to the VDI following local Windows resource failures. |
+| arctic-embed-m-v2__pytorch-fp32__256d | skipped | Full current conformance and retrieval are deferred to the VDI following local Windows resource failures. |
+| arctic-embed-m-v2__pytorch-fp32__768d | skipped | Full current conformance and retrieval are deferred to the VDI following local Windows resource failures. |
+| embeddinggemma-300m (no authorized artifact) | skipped | Upstream authorization unavailable; no runnable or redistributed Gemma artifact. |
+| nomic-embed-text-v1.5__gguf-q4_k_m__768d | skipped | Full current conformance and retrieval are deferred to the VDI following local Windows resource failures. |
+| nomic-embed-text-v1.5__onnx-int8__768d | skipped | Full current conformance and retrieval are deferred to the VDI following local Windows resource failures. |
+| nomic-embed-text-v1.5__pytorch-fp32__768d | skipped | Full current conformance and retrieval are deferred to the VDI following local Windows resource failures. |
+| qwen3-embedding-0.6b__onnx-int8__1024d | skipped | Full current conformance and retrieval are deferred to the VDI following local Windows resource failures. |
+| qwen3-embedding-0.6b__onnx-int8__768d | skipped | Full current conformance and retrieval are deferred to the VDI following local Windows resource failures. |
+| qwen3-embedding-0.6b__pytorch-reference__1024d | skipped | Full current conformance and retrieval are deferred to the VDI following local Windows resource failures. |
+| qwen3-embedding-0.6b__pytorch-reference__768d | skipped | Full current conformance and retrieval are deferred to the VDI following local Windows resource failures. |
+| voyage-4-nano__onnx-int8__1024d | skipped | Full current conformance and retrieval are deferred to the VDI following local Windows resource failures. |
+| voyage-4-nano__onnx-int8__512d | skipped | Full current conformance and retrieval are deferred to the VDI following local Windows resource failures. |
+| voyage-4-nano__pytorch-reference__1024d | skipped | Full current conformance and retrieval are deferred to the VDI following local Windows resource failures. |
+| voyage-4-nano__pytorch-reference__512d | skipped | Full current conformance and retrieval are deferred to the VDI following local Windows resource failures. |
+| bge-base-en-v1.5__onnx-int8__768d | failed | Full SciFact retrieval failed with a memory allocation error before the CLS buffer-copy fix; rerun on VDI. No score was produced. |
+| bge-base-en-v1.5__pytorch-fp32__768d | failed | Full SciFact retrieval failed with a memory allocation error before the CLS buffer-copy fix; rerun on VDI. No score was produced. |
+
+## Interpretation and reproduction
+
+Controlled data is synthetic and exhaustively labelled. Public company qrels are incomplete: missing pairs remain unknown; Precision/MAP are suppressed. nDCG follows pooled-qrel scoring with unjudged gains of zero. Only rows with matching dataset, representation, hardware, thread budget, catalog and source digests should be compared. Rows without a passed validation receipt are exploratory. Full raw JSON and CSV retain those identities.
+
+Follow [VDI_AGENT_GUIDE.md](VDI_AGENT_GUIDE.md) for the complete commands. From the repository run `python scripts/run_all.py --model-root <MODEL_DIR> --dataset <DATASET_DIR> --machine-role vdi --threads 8 --llama-server <LLAMA_SERVER_EXE> --output-dir <RESULTS_DIR>`, then `python scripts/generate_report.py --results <RESULTS_DIR> --reports reports`.

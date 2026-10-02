@@ -4,6 +4,10 @@
 
 Use this repository to download the pinned artifacts from GitHub, verify them, run CPU retrieval and performance measurements on the actual VDI, and produce traceable reports. Follow the user's public-sources-now/PitchBook-later choice.
 
+Use GPT-6 Luna agents for assistance and run the commands below directly, without AI Flow, following the user's latest instruction.
+
+The delivered personal-PC evidence covers BGE/E5/GTE on the public pilot and a controlled BGE FP32/INT8 comparison. Full larger-family runs and full SciFact retrieval are assigned to the VDI. A CLS token-buffer retention defect was corrected before packaging; the laptop's pre-fix SciFact failures are retained as failures. See [LOCAL_VALIDATION.md](LOCAL_VALIDATION.md) for exact scope and source versions.
+
 Success means:
 
 - Each requested configuration has either measured results or an explicit failed/skipped reason.
@@ -40,6 +44,34 @@ $bundle = Join-Path $work 'offline-environment'
 ~~~
 
 If package indexes are available, `uv sync --frozen --extra test --extra transformers --extra onnx` is the alternative. Keep the configured CPU index. Do not upgrade packages or replace artifacts mid-comparison.
+
+### Fully disconnected transfer
+
+On a connected machine, complete steps 1–3 below once. Carry over:
+
+- The extracted complete kit or Git checkout.
+- `offline-cpu-python312-windows-x64.zip` and its kit manifest.
+- The verified `models` folder, including every package's licenses and custom code.
+- The prepared `data` folder containing controlled and imported SciFact tracks.
+- `downloads/llama-b11146-bin-win-cpu-x64.zip` (also available in this kit's release).
+
+On the disconnected destination, set `$repo` to the extracted kit and `$work` to an accessible work folder. Place transferred model/data folders at `$work\models` and `$work\data`, and the llama archive at `$work\downloads`. Supply the portable environment ZIP path explicitly:
+
+~~~powershell
+cd $repo
+.\scripts\setup_offline.ps1 -WorkDir $work -ArchivePath (Join-Path $work 'offline-cpu-python312-windows-x64.zip')
+$py = Join-Path $work '.venv\Scripts\python.exe'
+$models = Join-Path $work 'models'
+& $py scripts/setup_llama_runtime.py --work-dir $work
+$llama = Join-Path $work 'runtime\llama-b11146\llama-server.exe'
+& $py scripts/verify_models.py --model-root $models --llama-server $llama
+$controlled = Join-Path $work 'data\controlled-v1'
+$scifact = Join-Path $work 'data\scifact'
+& $py -m embedding_bench.cli validate-dataset $controlled
+& $py -m embedding_bench.cli validate-dataset $scifact
+~~~
+
+Create a new environment from the portable ZIP; virtual environments contain machine-specific paths. The runtime installer reuses its checksummed local archive. Continue with machine inspection and artifact validation; skip the model/dataset network download commands. Keep the transferred licenses. This route requires neither Hugging Face, GitHub, PyPI nor a preinstalled Python interpreter on the destination.
 
 ## 2. Download and inspect
 
@@ -110,6 +142,8 @@ Keep smoke and full performance output directories separate. Quality uses the en
 `--variant` and `--representation` are repeatable selectors; `--quality-only` omits speed. Every row runs in a fresh process. Avoid concurrent inference or model downloads during final performance measurements.
 
 For large matrices, prioritize BGE, E5, GTE, Arctic, Qwen and Voyage as the user requested. Explicitly record any reduced scope rather than implying completion.
+
+For the first full matrix, select `--representation description_only --representation description_keywords --quality-only`. Complete current conformance and quality for the larger families first. Then measure speed for valid shortlisted rows, and add enriched field/context experiments. This keeps the sparse company-screening comparison usable early in the VDI run.
 
 ## 6. Standard retrieval
 

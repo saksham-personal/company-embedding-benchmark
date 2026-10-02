@@ -1,0 +1,7 @@
+{
+  "status": "skipped",
+  "kind": "benchmark_not_run",
+  "variant_id": "nomic-embed-text-v1.5__pytorch-fp32__768d",
+  "reason": "user_deferred_to_vdi",
+  "error": "Full current conformance and retrieval are deferred to the VDI following local Windows resource failures."
+}
