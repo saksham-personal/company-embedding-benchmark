@@ -153,7 +153,9 @@ class TransformersAdapter(BaseAdapter):
             with self.torch.inference_mode():
                 output = self.backend_model(**tokens)
                 embeddings = pool_torch(output, tokens["attention_mask"], self.pooling)
-            chunks.append(embeddings.detach().cpu().float().numpy())
+            # CLS pooling is a view; own only the pooled vectors so earlier
+            # batches cannot retain their full token-output storage.
+            chunks.append(embeddings.detach().cpu().float().numpy().copy())
         return np.concatenate(chunks, axis=0)
 
 
@@ -203,7 +205,8 @@ class OnnxAdapter(BaseAdapter):
                 if self.output_name not in self.output_names:
                     raise AdapterError(f"ONNX output {self.output_name!r} is unavailable: {self.output_names}")
             output = outputs[0]
-            chunks.append(pool_numpy(output, tokens["attention_mask"], self.pooling))
+            # A CLS slice shares the full token matrix until explicitly copied.
+            chunks.append(pool_numpy(output, tokens["attention_mask"], self.pooling).copy())
         return np.concatenate(chunks, axis=0)
 
 

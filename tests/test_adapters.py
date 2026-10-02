@@ -93,3 +93,50 @@ def test_qwen_onnx_feed_positions_and_empty_cache_follow_config():
     with pytest.raises(AdapterError, match="required ONNX input"):
         onnx_feed(tokens, inputs, {"model_type": "qwen3", "num_key_value_heads": 8, "head_dim": 128})
 
+
+@pytest.mark.parametrize("backend", ["transformers", "onnxruntime"])
+def test_cls_encoding_accumulates_compact_owned_vectors(monkeypatch, backend):
+    """Inspect accumulated chunks, before concatenate hides retained token buffers."""
+    from types import SimpleNamespace
+    from embedding_bench.adapters import runtime
+
+    torch = pytest.importorskip("torch") if backend == "transformers" else None
+    buffers = []
+
+    def tokenizer(texts, **kwargs):
+        mask = np.ones((len(texts), 16), dtype=np.int64)
+        return {"attention_mask": torch.from_numpy(mask) if torch else mask}
+
+    def hidden_for(batch):
+        hidden = np.arange(batch * 16 * 3, dtype=np.float32).reshape(batch, 16, 3)
+        hidden = hidden + len(buffers) * 1000
+        buffers.append(hidden)
+        return hidden
+
+    if torch:
+        adapter = object.__new__(runtime.TransformersAdapter)
+        adapter.torch = torch
+        adapter.backend_model = lambda **tokens: SimpleNamespace(
+            last_hidden_state=torch.from_numpy(hidden_for(len(tokens["attention_mask"]))))
+    else:
+        adapter = object.__new__(runtime.OnnxAdapter)
+        adapter.session = SimpleNamespace(run=lambda names, feed: [hidden_for(2)])
+        adapter.inputs, adapter.config = [], {}
+        adapter.output_name, adapter.output_names = None, ["last_hidden_state"]
+    adapter.tokenizer, adapter.max_tokens, adapter.pooling = tokenizer, 16, "cls"
+    concatenate = np.concatenate
+
+    def checked_concatenate(chunks, axis=0):
+        assert len(chunks) == 2
+        for chunk, hidden in zip(chunks, buffers):
+            assert chunk.shape == (2, 3)
+            assert chunk.flags.owndata and chunk.flags.c_contiguous
+            assert chunk.base is None
+            assert not np.shares_memory(chunk, hidden)
+            np.testing.assert_array_equal(chunk, hidden[:, 0])
+        return concatenate(chunks, axis=axis)
+
+    monkeypatch.setattr(runtime.np, "concatenate", checked_concatenate)
+    actual = adapter._encode(["a", "b", "c", "d"], batch_size=2)
+    np.testing.assert_array_equal(actual, concatenate([hidden[:, 0] for hidden in buffers]))
+
