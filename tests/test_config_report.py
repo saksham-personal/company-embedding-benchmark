@@ -60,3 +60,13 @@ def test_failed_result_metrics_are_not_added_to_quality_table(tmp_path):
     generate_report(results, tmp_path / "reports")
     assert (results / "quality" / "company_retrieval.csv").read_text() == ""
 
+
+def test_report_preserves_all_candidate_recall_cutoffs(tmp_path):
+    results = tmp_path / "results"
+    results.mkdir()
+    write(results / "row.json", {"status": "measured", "variant_id": "model", "dataset_track": "source_backed",
+        "metrics": {"macro": {"candidate_recall@25": .1, "candidate_recall@50": .2, "candidate_recall@100": .3}}})
+    markdown, _ = generate_report(results, tmp_path / "reports")
+    text = markdown.read_text(encoding="utf-8")
+    assert all(f"Candidate R@{k}" in text for k in (25, 50, 100))
+

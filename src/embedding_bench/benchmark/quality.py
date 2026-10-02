@@ -13,7 +13,11 @@ COMPANY_INSTRUCTION = ("Given a company screening criterion, retrieve company de
 
 
 def effective_instruction(adapter: Any, dataset: BenchmarkDataset, instruction: str | None) -> str | None:
-    convention = adapter.model["text_convention"]["query"]
+    return instruction_for_model(adapter.model, dataset, instruction)
+
+
+def instruction_for_model(model: dict[str, Any], dataset: BenchmarkDataset, instruction: str | None) -> str | None:
+    convention = model["text_convention"]["query"]
     if not convention.get("instruction_template"):
         return None
     if instruction:
@@ -37,7 +41,9 @@ def run_quality(adapter: Any, dataset: BenchmarkDataset, *, representation: str 
             field_company_ids.append(company["company_id"])
             field_names.append(field_name)
     instruction = effective_instruction(adapter, dataset, instruction)
-    query_vectors = adapter.encode_queries(query_texts, instruction=instruction, batch_size=batch_size)
+    # A production screening criterion is encoded independently. Dynamic INT8
+    # activation ranges and decoder padding must not depend on other queries.
+    query_vectors = adapter.encode_queries(query_texts, instruction=instruction, batch_size=1)
     document_vectors = adapter.encode_documents(field_texts, batch_size=batch_size)
     aggregation = "weighted" if representation == "fields_weighted" else "max"
     rankings = rank_dataset(
@@ -58,6 +64,7 @@ def run_quality(adapter: Any, dataset: BenchmarkDataset, *, representation: str 
         "representation": representation,
         "instruction": instruction or adapter.model["text_convention"]["query"].get("default_instruction"),
         "runtime": getattr(adapter, "runtime", {}),
+        "document_batch_size": batch_size, "query_batch_size": 1,
         "dimension": adapter.dimension, "max_tokens": adapter.max_tokens,
         "query_count": len(query_ids), "company_count": len(dataset.companies),
         "representation_inputs": {

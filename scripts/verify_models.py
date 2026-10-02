@@ -10,6 +10,7 @@ from pathlib import Path
 from embedding_bench.adapters import UnsupportedHardware, load_adapter
 from embedding_bench.benchmark.provenance import write_result
 from embedding_bench.config import Catalog
+from embedding_bench.downloads import verify_payload
 
 SENTINEL = "@@EMBEDDING_BENCH_RESULT@@"
 
@@ -31,6 +32,8 @@ def verify_one(args: argparse.Namespace, variant_id: str) -> dict[str, object]:
         os.environ["LLAMA_SERVER"] = str(args.llama_server.resolve())
     catalog = Catalog.load(args.project_root / "configs")
     try:
+        artifact = catalog.artifacts[catalog.variants[variant_id]["artifact_id"]]
+        verify_payload(args.model_root / artifact["artifact_id"], artifact["files"])
         adapter = load_adapter(catalog, variant_id, args.model_root, args.threads)
         texts = ["A manufacturer of HVAC-grade steel sheet.", "Fraud monitoring software for banks."]
         queries = adapter.encode_queries(texts, batch_size=2)

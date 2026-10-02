@@ -36,7 +36,8 @@ def _quality_rows(results):
                             else result["metrics"]["metric_semantics"].get("recall_name", "recall")
                             if "metric_semantics" in result["metrics"] else "recall"),
             "recall@25": macro.get("recall@25"), "recall@50": macro.get("recall@50"),
-            "recall@100": macro.get("recall@100"), "candidate_recall@50": macro.get("candidate_recall@50"),
+            "recall@100": macro.get("recall@100"), "candidate_recall@25": macro.get("candidate_recall@25"),
+            "candidate_recall@50": macro.get("candidate_recall@50"), "candidate_recall@100": macro.get("candidate_recall@100"),
             "ndcg@10": macro.get("ndcg@10"), "ndcg@20": macro.get("ndcg@20"), "mrr@10": macro.get("mrr@10"),
             "hard_negative_share@25": macro.get("hard_negative_share@25"),
             "recall_query_count": result["metrics"].get("metric_query_counts", {}).get("recall@50"),
@@ -44,6 +45,8 @@ def _quality_rows(results):
             "dataset_digest": prov.get("dataset_digest"), "hardware_id": prov.get("hardware_id"),
             "catalog_digest": prov.get("catalog_digest"), "source_digest": prov.get("source_digest"),
             "threads": result.get("runtime", {}).get("threads"),
+            "document_batch_size": result.get("document_batch_size"), "query_batch_size": result.get("query_batch_size"),
+            "instruction": result.get("instruction"),
         })
     return rows
 
@@ -129,7 +132,8 @@ def generate_report(results_dir: str | Path, reports_dir: str | Path) -> tuple[P
     _table(lines, quality, [("variant_id", "Variant"), ("dataset_id", "Dataset"), ("representation", "Representation"),
         ("dimension", "Dim"), ("machine_role", "Machine"), ("validation", "Validation"), ("recall_kind", "Recall meaning"),
         ("recall@25", "R@25"), ("recall@50", "R@50"), ("recall@100", "R@100"),
-        ("candidate_recall@50", "Candidate R@50"), ("ndcg@10", "nDCG@10"), ("ndcg@20", "nDCG@20")])
+        ("candidate_recall@25", "Candidate R@25"), ("candidate_recall@50", "Candidate R@50"),
+        ("candidate_recall@100", "Candidate R@100"), ("ndcg@10", "nDCG@10"), ("ndcg@20", "nDCG@20")])
     lines.append("\nSource-backed R@K uses direct relevance-2 positives on eligible queries; candidate recall also includes "
                  "partial relevance-1 matches. Exclusion probes without strict positives are omitted from strict recall denominators. "
                  "Recall@100 on the 130-company pilot is especially weak evidence.\n\n")

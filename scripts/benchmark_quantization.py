@@ -34,6 +34,8 @@ def main() -> int:
     ref, cand = catalog.variants[args.reference], catalog.variants[args.candidate]
     if ref["model_id"] != cand["model_id"] or ref["dimensions"] != cand["dimensions"]:
         raise SystemExit("reference and candidate must have the same family and output dimensions")
+    if ref["backend"] != "transformers" or ref["weight_quantization"] != "none":
+        raise SystemExit("reference must be the native unquantized Transformers row")
     output = args.output or root / "results" / "comparisons" / f"{args.candidate}__quantization.json"
     receipt_path = args.validation_file or output.parent / (args.candidate + "__validation") / "artifact-validation.json"
     environment = os.environ.copy()
@@ -45,12 +47,16 @@ def main() -> int:
     if args.llama_server:
         common.extend(["--llama-server", str(args.llama_server)])
     if not args.validation_file:
+        receipt_path.unlink(missing_ok=True)
         subprocess.run([sys.executable, str(root / "scripts" / "validate_artifacts.py"), *common,
             "--variant", args.reference, "--variant", args.candidate, "--output-dir", str(receipt_path.parent),
-            "--batch-size", str(args.batch_size)], env=environment, check=False)
+            "--batch-size", str(args.batch_size)], env=environment, check=True)
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
     checks = {row["variant_id"]: row for row in receipt["variants"]}
     check = checks.get(args.candidate, {"status": "failed", "error": "no validation record"})
+    if check["status"] == "passed" and (checks.get(args.reference, {}).get("status") != "passed"
+                                        or check.get("reference") != args.reference):
+        raise SystemExit("receipt does not contain the requested passed native reference pair")
     result = {"status": "measured" if check["status"] == "passed" else check["status"],
               "experiment": "weight_quantization", "reference": args.reference, "candidate": args.candidate,
               "representation": args.representation, "error": check.get("error"),

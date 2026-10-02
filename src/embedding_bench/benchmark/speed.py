@@ -32,15 +32,17 @@ def _resources(process):
 
 
 def _measure(adapter: Any, texts: list[str], *, kind: str, batch_sizes: tuple[int, ...],
-             warmup_rounds: int, measurement_rounds: int, bucket: str) -> list[dict[str, Any]]:
+             warmup_rounds: int, measurement_rounds: int, bucket: str,
+             instruction: str | None = None) -> list[dict[str, Any]]:
     encode = adapter.encode_queries if kind == "query" else adapter.encode_documents
+    options = {"instruction": instruction} if kind == "query" else {}
     process = psutil.Process()
     rows = []
     for batch_size in batch_sizes:
         def batch(round_index):
             return [texts[(round_index * batch_size + index) % len(texts)] for index in range(batch_size)]
         for index in range(warmup_rounds):
-            encode(batch(index), batch_size=batch_size)
+            encode(batch(index), batch_size=batch_size, **options)
         gc.collect()
         rss_start, cpu_start = _resources(process)
         peak = [rss_start]
@@ -55,7 +57,7 @@ def _measure(adapter: Any, texts: list[str], *, kind: str, batch_sizes: tuple[in
         try:
             for index in range(measurement_rounds):
                 start = time.perf_counter()
-                encode(batch(index + warmup_rounds), batch_size=batch_size)
+                encode(batch(index + warmup_rounds), batch_size=batch_size, **options)
                 latencies_ms.append((time.perf_counter() - start) * 1000)
         finally:
             elapsed = time.perf_counter() - start_all
@@ -76,7 +78,8 @@ def _measure(adapter: Any, texts: list[str], *, kind: str, batch_sizes: tuple[in
 
 def run_speed(adapter: Any, document_texts: list[str], query_texts: list[str] | None = None, *,
               batch_sizes: tuple[int, ...] = (1, 8, 32, 64), warmup_rounds: int = 3,
-              measurement_rounds: int = 20, cold_load_seconds: float | None = None) -> dict[str, Any]:
+              measurement_rounds: int = 20, cold_load_seconds: float | None = None,
+              instruction: str | None = None) -> dict[str, Any]:
     if not document_texts or measurement_rounds < 1 or any(size < 1 for size in batch_sizes):
         raise ValueError("speed measurements require texts, positive rounds, and positive batches")
     query_texts = query_texts or document_texts[:8]
@@ -95,6 +98,7 @@ def run_speed(adapter: Any, document_texts: list[str], query_texts: list[str] | 
         "status": "measured", "variant_id": adapter.variant["variant_id"],
         "dimension": adapter.dimension, "max_tokens": adapter.max_tokens,
         "runtime": getattr(adapter, "runtime", {}), "measurement_rounds": measurement_rounds,
+        "instruction": instruction, "query_batch_size": 1,
         "cold_load_seconds": cold_load_seconds,
         "cold_load_semantics": "fresh Python process/adapter; filesystem cache is not flushed",
         "memory_semantics": "sum of parent and child RSS; sampled peak at 20 ms, shared pages may be counted twice",
@@ -103,6 +107,6 @@ def run_speed(adapter: Any, document_texts: list[str], query_texts: list[str] | 
             adapter, texts, kind="document", batch_sizes=batch_sizes, bucket=bucket,
             warmup_rounds=warmup_rounds, measurement_rounds=measurement_rounds)],
         "query_latency": _measure(adapter, query_texts, kind="query", batch_sizes=(1,), bucket="mixed_queries",
-            warmup_rounds=warmup_rounds, measurement_rounds=max(measurement_rounds, 50)),
+            warmup_rounds=warmup_rounds, measurement_rounds=max(measurement_rounds, 50), instruction=instruction),
     }
 

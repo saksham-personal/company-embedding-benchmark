@@ -58,6 +58,32 @@ def pool_numpy(hidden: np.ndarray, mask: np.ndarray, method: str) -> np.ndarray:
     raise AdapterError(f"unsupported pooling method: {method}")
 
 
+def onnx_feed(tokens: Any, inputs: Sequence[Any], config: dict[str, Any]) -> dict[str, np.ndarray]:
+    """Supply a full-sequence embedding export, including an empty decoder cache."""
+    feed = {}
+    mask = np.asarray(tokens["attention_mask"], dtype=np.int64)
+    dtypes = {"tensor(int64)": np.int64, "tensor(float)": np.float32,
+              "tensor(float16)": np.float16, "tensor(bool)": np.bool_}
+    for item in inputs:
+        if item.type not in dtypes:
+            raise AdapterError(f"unsupported ONNX input type: {item.name}: {item.type}")
+        dtype = dtypes[item.type]
+        if item.name in tokens:
+            feed[item.name] = np.asarray(tokens[item.name], dtype=dtype)
+        elif item.name == "position_ids":
+            feed[item.name] = np.maximum(np.cumsum(mask, axis=1) - 1, 0).astype(dtype)
+        elif item.name.startswith("past_key_values.") and item.name.endswith((".key", ".value")):
+            if config.get("model_type") != "qwen3" or len(item.shape) != 4:
+                raise AdapterError(f"unsupported decoder cache input: {item.name}")
+            heads, width = config["num_key_value_heads"], config["head_dim"]
+            if item.shape[1] != heads or item.shape[3] != width:
+                raise AdapterError(f"decoder cache shape does not match pinned config: {item.name}")
+            feed[item.name] = np.empty((mask.shape[0], heads, 0, width), dtype=dtype)
+        else:
+            raise AdapterError(f"required ONNX input is unsupported: {item.name}")
+    return feed
+
+
 class TransformersAdapter(BaseAdapter):
     def __init__(self, model: dict[str, Any], variant: dict[str, Any], model_dir: Path,
                  artifact: dict[str, Any], threads: int | None = None) -> None:
@@ -113,7 +139,8 @@ class TransformersAdapter(BaseAdapter):
             ).eval()
         self.pooling = variant.get("pooling_override") or model["architecture"]["pooling"]
         self.runtime = {"backend": "transformers", "torch": torch.__version__, "device": "cpu",
-                        "threads": torch.get_num_threads(), "inter_op_threads": torch.get_num_interop_threads()}
+                        "threads": torch.get_num_threads(), "inter_op_threads": torch.get_num_interop_threads(),
+                        "parameter_dtype": str(next(self.backend_model.parameters()).dtype)}
         self.torch = torch
 
     def _encode(self, texts: Sequence[str], *, batch_size: int) -> np.ndarray:
@@ -153,7 +180,8 @@ class OnnxAdapter(BaseAdapter):
         self.tokenizer = AutoTokenizer.from_pretrained(
             model_dir, local_files_only=True, trust_remote_code=trust
         )
-        self.input_names = {item.name for item in self.session.get_inputs()}
+        self.inputs = self.session.get_inputs()
+        self.config = json.loads((model_dir / "config.json").read_text(encoding="utf-8"))
         self.output_names = [item.name for item in self.session.get_outputs()]
         self.output_name = variant.get("output_name") or artifact.get("output_name")
         self.pooling = variant.get("pooling_override") or model["architecture"]["pooling"]
@@ -168,15 +196,13 @@ class OnnxAdapter(BaseAdapter):
                 list(texts[start:start + batch_size]), padding=True, truncation=True,
                 max_length=self.max_tokens, return_tensors="np"
             )
-            feed = {name: np.asarray(value, dtype=np.int64)
-                    for name, value in tokens.items() if name in self.input_names}
-            outputs = self.session.run(None, feed)
+            feed = onnx_feed(tokens, self.inputs, self.config)
+            selected_output = self.output_name or self.output_names[0]
+            outputs = self.session.run([selected_output], feed)
             if self.output_name:
                 if self.output_name not in self.output_names:
                     raise AdapterError(f"ONNX output {self.output_name!r} is unavailable: {self.output_names}")
-                output = outputs[self.output_names.index(self.output_name)]
-            else:
-                output = outputs[0]
+            output = outputs[0]
             chunks.append(pool_numpy(output, tokens["attention_mask"], self.pooling))
         return np.concatenate(chunks, axis=0)
 

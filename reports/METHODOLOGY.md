@@ -30,7 +30,9 @@ Model prompts, pooling, output projection and dimensions come from pinned offici
 
 ## Artifact correctness
 
-Payload checksums precede custom-code execution. Each artifact is isolated in a process. Native dimensions, finite/unit vectors, repeat determinism and padding consistency are checked. Same-batch repeats have strict numerical tolerances; different-padding batches require cosine >= 0.999 to accommodate floating-point differences.
+Payload checksums precede custom-code execution on validation and benchmark commands. Each artifact is isolated in a process. Native dimensions, finite/unit vectors, repeat determinism and padding consistency are checked. Same-batch repeats have strict numerical tolerances; different-padding batches require cosine >= 0.999 for native/unquantized rows. Quantized cross-batch cosine is reported diagnostically because dynamic activation scales can change with batch composition. The BGE, GTE, Arctic and Nomic INT8 graph files contain the DynamicQuantizeLinear operator. See [the ONNX Runtime documentation](https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html).
+
+Quality queries always use batch 1. Documents use a fixed ingestion batch (default 8); changing it requires a new matching receipt. Receipts bind dataset, source/catalog, hardware, role, threads, effective instruction and batching. Speed experiments deliberately vary document batches and retain the sampled reference-validation scope. Qwen ONNX receives position IDs derived from the attention mask and zero-length KV caches sized from its pinned configuration; only its last-hidden-state output is used.
 
 Converted FP32 embeddings require paired query/document cosine p5 >= 0.99 and minimum >= 0.98; quantized candidates require p5 >= 0.90 and minimum >= 0.80. The latter gate detects gross conversion errors. Retrieval deltas are still necessary.
 

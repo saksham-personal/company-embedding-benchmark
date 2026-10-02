@@ -97,6 +97,8 @@ Inspect the actual VDI before choosing a fair thread budget:
 
 Validation runs in isolated processes, checks payload hashes, repeated embeddings, padding consistency, dimensions and reference cosine distributions for queries and documents. FP32 conversions require tighter similarity than quantized artifacts. This is an artifact correctness gate; retrieval deltas must still be measured.
 
+All quality queries are encoded individually; document ingestion defaults to batch 8. Dynamic INT8 activation scales can vary with batch composition, so quantized padding differences are recorded as diagnostics while repeat determinism and reference similarity remain required. Preserve the ingestion batch policy when comparing results. See [ONNX Runtime's quantization documentation](https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html).
+
 Run an initial company-pilot benchmark:
 
 ~~~powershell
@@ -104,6 +106,8 @@ Run an initial company-pilot benchmark:
 ~~~
 
 `--smoke` shortens performance repetitions; **quality still uses the entire supplied dataset**. For the full run, remove `--smoke`. It tests description-only, description + keywords, enriched one-vector, fields-max and fixed fields-weighted representations. Run the controlled and SciFact tracks separately using their dataset paths. SciFact uses its title + abstract representation.
+
+Validation receipts bind to the dataset, code/catalog, hardware, machine role, thread budget, instruction and quality document batch size. For each new track, omit `--validation-file` so the runner creates that track's receipt. A validation command failure stops the automatic runner. Inspect the fresh receipt before explicitly reusing it to run its passed rows; failed/skipped rows remain recorded.
 
 One row or a paired comparison:
 

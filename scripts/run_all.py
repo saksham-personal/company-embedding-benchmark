@@ -23,7 +23,7 @@ def main() -> int:
     parser.add_argument("--variant", action="append", help="Repeat to select specific variants")
     parser.add_argument("--representation", action="append", choices=("description_only", "description_keywords",
                         "one_vector_fields_rich", "fields_max", "fields_weighted"))
-    parser.add_argument("--batch-size", type=int, default=8, help="Quality/validation batch size")
+    parser.add_argument("--batch-size", type=int, default=8, help="Document quality/validation batch size; queries use 1")
     parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--validation-file", type=Path, help="Reuse an existing matching validation receipt")
     parser.add_argument("--quality-only", action="store_true")
@@ -45,6 +45,8 @@ def main() -> int:
                         "HF_MODULES_CACHE": str(args.model_root.parent / "cache" / "modules")})
     receipt_path = args.validation_file or output / "validation" / "artifact-validation.json"
     if not args.validation_file:
+        # A crashed subprocess must never leave an older passed gate usable.
+        receipt_path.unlink(missing_ok=True)
         command = [sys.executable, str(root / "scripts" / "validate_artifacts.py"),
                    "--project-root", str(root), "--model-root", str(args.model_root), "--dataset", str(args.dataset),
                    "--output-dir", str(receipt_path.parent), "--threads", str(args.threads),
@@ -53,7 +55,7 @@ def main() -> int:
             command.extend(["--variant", variant])
         if args.llama_server:
             command.extend(["--llama-server", str(args.llama_server)])
-        subprocess.run(command, cwd=root, env=environment, check=False)
+        subprocess.run(command, cwd=root, env=environment, check=True)
     if not receipt_path.is_file():
         raise SystemExit("reference-validation receipt was not created")
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))

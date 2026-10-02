@@ -73,3 +73,23 @@ def test_last_nonpadding_handles_left_padding():
     hidden = np.array([[[99, 99], [1, 2], [3, 4]]], dtype=np.float32)
     assert np.allclose(pool_numpy(hidden, np.array([[0, 1, 1]]), "last_nonpadding"), [[3, 4]])
 
+
+def test_qwen_onnx_feed_positions_and_empty_cache_follow_config():
+    from types import SimpleNamespace
+    from embedding_bench.adapters.runtime import onnx_feed
+    inputs = [SimpleNamespace(name=name, type=dtype, shape=shape) for name, dtype, shape in (
+        ("input_ids", "tensor(int64)", ["batch", "sequence"]),
+        ("attention_mask", "tensor(int64)", ["batch", "sequence"]),
+        ("position_ids", "tensor(int64)", ["batch", "sequence"]),
+        ("past_key_values.0.key", "tensor(float)", ["batch", 8, "past", 128]),
+        ("past_key_values.0.value", "tensor(float)", ["batch", 8, "past", 128]))]
+    tokens = {"input_ids": np.array([[0, 1, 2], [3, 4, 0]]),
+              "attention_mask": np.array([[0, 1, 1], [1, 1, 0]])}
+    feed = onnx_feed(tokens, inputs, {"model_type": "qwen3", "num_key_value_heads": 8, "head_dim": 128})
+    assert feed["position_ids"].tolist() == [[0, 0, 1], [0, 1, 1]]
+    assert feed["past_key_values.0.key"].shape == (2, 8, 0, 128)
+    assert feed["past_key_values.0.value"].dtype == np.float32
+    inputs.append(SimpleNamespace(name="unsupported_required", type="tensor(int64)", shape=[]))
+    with pytest.raises(AdapterError, match="required ONNX input"):
+        onnx_feed(tokens, inputs, {"model_type": "qwen3", "num_key_value_heads": 8, "head_dim": 128})
+

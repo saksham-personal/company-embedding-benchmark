@@ -12,7 +12,7 @@ import numpy as np
 
 from embedding_bench.adapters import UnsupportedHardware, load_adapter
 from embedding_bench.benchmark.provenance import provenance, source_digest, write_result
-from embedding_bench.benchmark.quality import compare_embeddings, effective_instruction
+from embedding_bench.benchmark.quality import compare_embeddings, effective_instruction, instruction_for_model
 from embedding_bench.config import Catalog, canonical_digest
 from embedding_bench.datasets import load_dataset
 from embedding_bench.downloads import verify_payload
@@ -60,9 +60,9 @@ def export_one(args, catalog, dataset, variant_id, fingerprint):
         queries = [row["text"] for row in dataset.queries[:100]]
         instruction = effective_instruction(adapter, dataset, args.instruction)
         doc_vectors = adapter.encode_documents(documents, batch_size=args.batch_size)
-        query_vectors = adapter.encode_queries(queries, batch_size=args.batch_size, instruction=instruction)
+        query_vectors = adapter.encode_queries(queries, batch_size=1, instruction=instruction)
         doc_repeat = adapter.encode_documents(documents[:args.batch_size], batch_size=args.batch_size)
-        query_repeat = adapter.encode_queries(queries[:args.batch_size], batch_size=args.batch_size, instruction=instruction)
+        query_repeat = adapter.encode_queries(queries[:args.batch_size], batch_size=1, instruction=instruction)
         deterministic = bool(np.allclose(doc_vectors[:len(doc_repeat)], doc_repeat, atol=1e-6, rtol=1e-5)
                              and np.allclose(query_vectors[:len(query_repeat)], query_repeat, atol=1e-6, rtol=1e-5))
         doc_small_batch = adapter.encode_documents(documents[:2], batch_size=2)
@@ -71,12 +71,16 @@ def export_one(args, catalog, dataset, variant_id, fingerprint):
                                        np.sum(query_vectors[:2] * query_small_batch, axis=1).min()))
         if not deterministic:
             raise ValueError("same-batch embedding determinism failed")
-        if padding_cosine_min < .999:
+        quantized = variant["weight_quantization"] != "none"
+        if not quantized and padding_cosine_min < .999:
             raise ValueError(f"batch-padding consistency cosine below .999: {padding_cosine_min}")
         np.savez(args.output_dir / f"{variant_id}.npz", documents=doc_vectors, queries=query_vectors)
         return {"variant_id": variant_id, "status": "passed", "fingerprint": fingerprint,
                 "deterministic": deterministic, "document_count": len(documents), "query_count": len(queries),
                 "padding_consistency_cosine_min": padding_cosine_min,
+                "padding_gate": "diagnostic_only_for_quantized" if quantized else "cosine_at_least_0.999",
+                "batch_variation_warning": bool(quantized and padding_cosine_min < .999),
+                "document_batch_size": args.batch_size, "query_batch_size": 1,
                 "dimension": adapter.dimension, "max_tokens": adapter.max_tokens,
                 "instruction": instruction, "runtime": getattr(adapter, "runtime", {})}
     except UnsupportedHardware as exc:
@@ -93,8 +97,14 @@ def main():
     args.output_dir.mkdir(parents=True, exist_ok=True)
     catalog = Catalog.load(args.project_root / "configs")
     dataset = load_dataset(args.dataset)
+    run_provenance = provenance(project_root=args.project_root, machine_role=args.machine_role,
+        command=sys.argv, catalog_digest=catalog.digest, dataset_manifest=dataset.manifest)
     fingerprint = canonical_digest({"catalog": catalog.digest, "dataset": dataset.manifest,
-                                    "source": source_digest(args.project_root), "instruction": args.instruction})
+        "source": source_digest(args.project_root), "threads": args.threads,
+        "document_batch_size": args.batch_size, "query_batch_size": 1,
+        "machine_role": args.machine_role, "hardware_id": run_provenance["hardware_id"],
+        "instructions": {key: instruction_for_model(model, dataset, args.instruction)
+                         for key, model in catalog.models.items()}})
     requested = args.variant or [key for key, row in catalog.variants.items() if row.get("enabled", True)]
     if set(requested) - set(catalog.variants):
         raise SystemExit("unknown variant selection")
@@ -115,13 +125,16 @@ def main():
             row = json.loads(cached.read_text(encoding="utf-8"))
             if row.get("status") == "passed" and row.get("fingerprint") == fingerprint:
                 if (args.output_dir / f"{variant_id}.npz").is_file():
+                    artifact = catalog.artifacts[catalog.variants[variant_id]["artifact_id"]]
+                    verify_payload(args.model_root / artifact["artifact_id"], artifact["files"])
                     exports[variant_id] = row
                     print(json.dumps({"variant_id": variant_id, "status": "cached_pass"}), flush=True)
                     continue
         command = [sys.executable, str(Path(__file__).resolve()), "--child", "--variant", variant_id,
                    "--project-root", str(args.project_root), "--model-root", str(args.model_root),
                    "--dataset", str(args.dataset), "--output-dir", str(args.output_dir),
-                   "--threads", str(args.threads), "--batch-size", str(args.batch_size)]
+                   "--threads", str(args.threads), "--batch-size", str(args.batch_size),
+                   "--machine-role", args.machine_role]
         if args.llama_server:
             command += ["--llama-server", str(args.llama_server)]
         if args.instruction:
@@ -163,9 +176,7 @@ def main():
         rows.append(row)
     output = args.output_dir / "artifact-validation.json"
     write_result(output, {"status": "measured", "kind": "artifact_validation", "fingerprint": fingerprint,
-                          "variants": rows, "provenance": provenance(project_root=args.project_root,
-                          machine_role=args.machine_role, command=sys.argv, catalog_digest=catalog.digest,
-                          dataset_manifest=dataset.manifest)})
+                          "variants": rows, "provenance": run_provenance})
     print(output, flush=True)
     return int(any(row["status"] == "failed" for row in rows))
 

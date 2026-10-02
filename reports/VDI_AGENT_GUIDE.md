@@ -77,12 +77,14 @@ $validationDir = Join-Path $work 'validation'
 $validation = Join-Path $validationDir 'artifact-validation.json'
 ~~~
 
-The script hashes all payloads before executing custom code and exports up to 100 descriptions and 100 queries in separate processes. It checks finite/unit vectors, supported dimensions, deterministic same-batch repeats, and cross-padding cosine >= 0.999. It then compares queries and documents to the matching PyTorch reference.
+The script hashes all payloads before executing custom code and exports up to 100 descriptions and 100 queries in separate processes. It checks finite/unit vectors, supported dimensions, deterministic same-batch repeats, and cross-padding cosine >= 0.999 for native/unquantized artifacts. For quantized artifacts, cross-batch cosine is a diagnostic: dynamic activation scales depend on the batch. Repeat determinism and reference cosine gates remain mandatory. It then compares queries and documents to the matching PyTorch reference. All quality queries use batch 1; document ingestion uses the declared batch size.
 
 - FP32 conversion: cosine p5 >= 0.99 and minimum >= 0.98.
 - Quantized conversion: p5 >= 0.90 and minimum >= 0.80.
 
-A gross-error gate does not establish equal retrieval quality. A failed reference blocks its derivative rows. Preserve failures; investigate prompts, pooling, projection, padding and normalization before interpreting a derivative. Re-run validation after code/catalog changes. Cached exports are keyed to model catalog, dataset, source code and instruction.
+A gross-error gate does not establish equal retrieval quality. A failed reference blocks its derivative rows. Preserve failures; investigate prompts, pooling, projection, padding and normalization before interpreting a derivative. Re-run validation after code/catalog changes. Cached exports include catalog, dataset, source code, hardware, machine role, threads, document/query batch policy and effective instructions. Each benchmark rehashes the payload before loading it.
+
+Receipts cannot be reused across datasets, hardware, machine roles, threads, instructions or quality document batch sizes. Create a separate receipt for each track. Omit `--validation-file` below to let the runner validate that track automatically. A failed validation subprocess stops the automatic run; inspect its fresh receipt before explicitly reusing it to run passed rows and record failed/skipped configurations.
 
 The gate samples the supplied dataset's text lengths. Validate on SciFact or dedicated context data too if long-document behavior matters. Do not generalize a short-description gate to an untested 8K/32K maximum.
 
@@ -93,7 +95,8 @@ The gate samples the supplied dataset's text lengths. Validate on SciFact or ded
 
 & $py scripts/run_all.py --model-root $models --dataset data/curated --threads 8 --machine-role vdi --llama-server $llama --validation-file $validation --output-dir (Join-Path $work 'results\curated')
 
-& $py scripts/run_all.py --model-root $models --dataset $controlled --threads 8 --machine-role vdi --llama-server $llama --validation-file $validation --output-dir (Join-Path $work 'results\controlled')
+& $py scripts/run_all.py --model-root $models --dataset $controlled --threads 8 --machine-role vdi --llama-server $llama --output-dir (Join-Path $work 'results\controlled')
+$controlledValidation = Join-Path $work 'results\controlled\validation\artifact-validation.json'
 ~~~
 
 Keep smoke and full performance output directories separate. Quality uses the entire dataset even in smoke mode. By default the full company runner tests:
@@ -111,7 +114,7 @@ For large matrices, prioritize BGE, E5, GTE, Arctic, Qwen and Voyage as the user
 ## 6. Standard retrieval
 
 ~~~powershell
-& $py scripts/run_all.py --model-root $models --dataset $scifact --threads 8 --machine-role vdi --llama-server $llama --validation-file $validation --quality-only --output-dir (Join-Path $work 'results\scifact')
+& $py scripts/run_all.py --model-root $models --dataset $scifact --threads 8 --machine-role vdi --llama-server $llama --quality-only --output-dir (Join-Path $work 'results\scifact')
 ~~~
 
 Use all 5,183 documents and the official 300 test queries. SciFact is supporting evidence, not a substitute for company screening. Report nDCG@10 alongside recall metrics. Preserve official licenses: claims/qrels CC BY 4.0 and abstracts ODC-By 1.0.
@@ -119,7 +122,7 @@ Use all 5,183 documents and the official 300 test queries. SciFact is supporting
 ## 7. Quantization, dimensions and CPU tuning
 
 ~~~powershell
-& $py scripts/benchmark_quantization.py --model-root $models --dataset $controlled --reference bge-base-en-v1.5__pytorch-fp32__768d --candidate bge-base-en-v1.5__onnx-int8__768d --representation description_keywords --threads 8 --machine-role vdi --validation-file $validation --output (Join-Path $work 'results\comparisons\bge-int8.json')
+& $py scripts/benchmark_quantization.py --model-root $models --dataset $controlled --reference bge-base-en-v1.5__pytorch-fp32__768d --candidate bge-base-en-v1.5__onnx-int8__768d --representation description_keywords --threads 8 --machine-role vdi --validation-file $controlledValidation --output (Join-Path $work 'results\comparisons\bge-int8.json')
 ~~~
 
 Repeat paired comparisons for each valid candidate. A one-percentage-point loss budget on Recall@50, Recall@100 and nDCG@20 is a **quality delta gate**. Call a candidate effectively lossless only with an observed CPU/storage benefit and representative query coverage. The paired script measures reference/candidate in separate processes to avoid keeping both large models in RAM.

@@ -9,11 +9,13 @@ from pathlib import Path
 
 from embedding_bench.adapters import load_adapter
 from embedding_bench.benchmark.provenance import provenance, write_result
-from embedding_bench.benchmark.quality import run_quality
+from embedding_bench.benchmark.quality import instruction_for_model, run_quality
 from embedding_bench.benchmark.speed import run_speed
+from embedding_bench.benchmark.validation import check_receipt
 from embedding_bench.config import Catalog
 from embedding_bench.datasets import build_controlled_dataset, load_dataset
 from embedding_bench.datasets.public import import_beir
+from embedding_bench.downloads import verify_payload
 from embedding_bench.hardware import inspect_machine
 from embedding_bench.reporting import generate_report
 
@@ -57,7 +59,7 @@ def build_parser() -> argparse.ArgumentParser:
     _common_runtime(quality)
     quality.add_argument("--dataset", type=Path, required=True)
     quality.add_argument("--representation", choices=("description_only", "description_keywords", "one_vector", "one_vector_fields_rich", "fields_max", "fields_weighted"), default="description_keywords")
-    quality.add_argument("--batch-size", type=int, default=32)
+    quality.add_argument("--batch-size", type=int, default=8, help="Document batch size; queries always use 1")
     quality.add_argument("--instruction")
     quality.add_argument("--output", type=Path)
     speed = sub.add_parser("speed")
@@ -65,6 +67,7 @@ def build_parser() -> argparse.ArgumentParser:
     speed.add_argument("--dataset", type=Path, required=True)
     speed.add_argument("--rounds", type=int, default=20)
     speed.add_argument("--batch-size", type=int, action="append", help="Document batch sizes; repeatable")
+    speed.add_argument("--instruction")
     speed.add_argument("--output", type=Path)
     report = sub.add_parser("report")
     report.add_argument("--results", type=Path, default=Path("results"))
@@ -110,35 +113,35 @@ def main(argv: list[str] | None = None) -> int:
             os.environ["LLAMA_SERVER"] = str(args.llama_server.resolve())
         catalog = Catalog.load(root / "configs")
         dataset = load_dataset(args.dataset)
+        variant = catalog.variants[args.variant]
+        instruction = instruction_for_model(catalog.models[variant["model_id"]], dataset, args.instruction)
+        run_provenance = provenance(project_root=root, machine_role=args.machine_role, command=sys.argv,
+                                    catalog_digest=catalog.digest, dataset_manifest=dataset.manifest)
         validation = None
         if args.validation_file:
             receipt = json.loads(args.validation_file.read_text(encoding="utf-8"))
-            if receipt.get("provenance", {}).get("catalog_digest") != catalog.digest:
-                raise SystemExit("validation receipt does not match the current model catalog")
-            from embedding_bench.benchmark.provenance import source_digest
-            if receipt.get("provenance", {}).get("source_digest") != source_digest(root):
-                raise SystemExit("validation receipt does not match the current source code")
-            validation = next((row for row in receipt["variants"] if row["variant_id"] == args.variant), None)
-            if not validation or validation["status"] != "passed":
-                raise SystemExit(f"variant has no passed reference-validation receipt: {args.variant}")
+            validation = check_receipt(receipt, catalog=catalog, project_root=root, dataset=dataset,
+                machine_role=args.machine_role, hardware_id=run_provenance["hardware_id"], threads=args.threads,
+                variant_id=args.variant, instruction=instruction,
+                document_batch_size=args.batch_size if args.command == "quality" else None)
+        artifact = catalog.artifacts[variant["artifact_id"]]
+        verify_payload(args.model_root / variant["artifact_id"], artifact["files"])
         load_started = time.perf_counter()
         adapter = load_adapter(catalog, args.variant, args.model_root, args.threads)
         cold_load_seconds = time.perf_counter() - load_started
         if args.command == "quality":
             result = run_quality(adapter, dataset, representation=args.representation,
-                                 batch_size=args.batch_size, instruction=args.instruction)
+                                 batch_size=args.batch_size, instruction=instruction)
             default = root / "results" / "quality" / f"{args.variant}__{dataset.manifest['dataset_id']}__{args.representation}.json"
         else:
             texts = [row["description"] for row in dataset.companies[:256]]
             query_texts = [row["text"] for row in dataset.queries[:64]]
             result = run_speed(adapter, texts, query_texts,
                                batch_sizes=tuple(args.batch_size or (1, 8, 32, 64)),
-                               measurement_rounds=args.rounds, cold_load_seconds=cold_load_seconds)
+                               measurement_rounds=args.rounds, cold_load_seconds=cold_load_seconds,
+                               instruction=instruction)
             default = root / "results" / "performance" / f"{args.variant}.json"
-        result["provenance"] = provenance(
-            project_root=root, machine_role=args.machine_role, command=sys.argv,
-            catalog_digest=catalog.digest, dataset_manifest=dataset.manifest
-        )
+        result["provenance"] = run_provenance
         result["validation"] = validation or {"status": "not_run", "scope": "exploratory row; reference conformance not established"}
         output = args.output or default
         write_result(output, result)
