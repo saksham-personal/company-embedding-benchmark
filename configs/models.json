@@ -1,0 +1,386 @@
+{
+  "schema_version": 1,
+  "models": [
+    {
+      "model_id": "bge-base-en-v1.5",
+      "family": "bge",
+      "upstream": {
+        "repo_id": "BAAI/bge-base-en-v1.5",
+        "revision": "a5beb1e3e68b9ab74eb54cfd186867f64f240e1a"
+      },
+      "license": {
+        "spdx": "MIT",
+        "redistribution_reviewed": true
+      },
+      "architecture": {
+        "native_dimensions": [
+          768
+        ],
+        "supported_dimensions": [
+          768
+        ],
+        "max_tokens": 512,
+        "pooling": "cls",
+        "l2_normalize": true,
+        "reduced_dimension_processing": "truncate_then_l2"
+      },
+      "text_convention": {
+        "query": {
+          "prefix": "Represent this sentence for searching relevant passages: ",
+          "instruction_template": null
+        },
+        "document": {
+          "prefix": "",
+          "instruction_template": null
+        }
+      },
+      "tokenizer": {
+        "repo_id": "BAAI/bge-base-en-v1.5",
+        "revision": "a5beb1e3e68b9ab74eb54cfd186867f64f240e1a"
+      },
+      "requires_remote_code": false,
+      "sources": [
+        {
+          "kind": "model_card",
+          "url": "https://huggingface.co/BAAI/bge-base-en-v1.5/blob/a5beb1e3e68b9ab74eb54cfd186867f64f240e1a/README.md",
+          "accessed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "model_id": "e5-base-v2",
+      "family": "e5",
+      "upstream": {
+        "repo_id": "intfloat/e5-base-v2",
+        "revision": "f52bf8ec8c7124536f0efb74aca902b2995e5bcd"
+      },
+      "license": {
+        "spdx": "MIT",
+        "redistribution_reviewed": true
+      },
+      "architecture": {
+        "native_dimensions": [
+          768
+        ],
+        "supported_dimensions": [
+          768
+        ],
+        "max_tokens": 512,
+        "pooling": "masked_mean",
+        "l2_normalize": true,
+        "reduced_dimension_processing": "truncate_then_l2"
+      },
+      "text_convention": {
+        "query": {
+          "prefix": "query: ",
+          "instruction_template": null
+        },
+        "document": {
+          "prefix": "passage: ",
+          "instruction_template": null
+        }
+      },
+      "tokenizer": {
+        "repo_id": "intfloat/e5-base-v2",
+        "revision": "f52bf8ec8c7124536f0efb74aca902b2995e5bcd"
+      },
+      "requires_remote_code": false,
+      "sources": [
+        {
+          "kind": "model_card",
+          "url": "https://huggingface.co/intfloat/e5-base-v2/blob/f52bf8ec8c7124536f0efb74aca902b2995e5bcd/README.md",
+          "accessed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "model_id": "gte-base-en-v1.5",
+      "family": "gte",
+      "upstream": {
+        "repo_id": "Alibaba-NLP/gte-base-en-v1.5",
+        "revision": "a829fd0e060bb84554da0dfd354d0de0f7712b7f"
+      },
+      "license": {
+        "spdx": "Apache-2.0",
+        "redistribution_reviewed": true
+      },
+      "architecture": {
+        "native_dimensions": [
+          768
+        ],
+        "supported_dimensions": [
+          768
+        ],
+        "max_tokens": 8192,
+        "pooling": "cls",
+        "l2_normalize": true,
+        "reduced_dimension_processing": "truncate_then_l2"
+      },
+      "text_convention": {
+        "query": {
+          "prefix": "",
+          "instruction_template": null
+        },
+        "document": {
+          "prefix": "",
+          "instruction_template": null
+        }
+      },
+      "tokenizer": {
+        "repo_id": "Alibaba-NLP/gte-base-en-v1.5",
+        "revision": "a829fd0e060bb84554da0dfd354d0de0f7712b7f"
+      },
+      "requires_remote_code": true,
+      "sources": [
+        {
+          "kind": "model_card",
+          "url": "https://huggingface.co/Alibaba-NLP/gte-base-en-v1.5/blob/a829fd0e060bb84554da0dfd354d0de0f7712b7f/README.md",
+          "accessed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "model_id": "arctic-embed-m-v2",
+      "family": "arctic",
+      "upstream": {
+        "repo_id": "Snowflake/snowflake-arctic-embed-m-v2.0",
+        "revision": "95c2741480856aa9666782eb4afe11959938017f"
+      },
+      "license": {
+        "spdx": "Apache-2.0",
+        "redistribution_reviewed": true
+      },
+      "architecture": {
+        "native_dimensions": [
+          768
+        ],
+        "supported_dimensions": [
+          768,
+          256
+        ],
+        "max_tokens": 8192,
+        "pooling": "cls",
+        "l2_normalize": true,
+        "reduced_dimension_processing": "truncate_then_l2"
+      },
+      "text_convention": {
+        "query": {
+          "prefix": "query: ",
+          "instruction_template": null
+        },
+        "document": {
+          "prefix": "",
+          "instruction_template": null
+        }
+      },
+      "tokenizer": {
+        "repo_id": "Snowflake/snowflake-arctic-embed-m-v2.0",
+        "revision": "95c2741480856aa9666782eb4afe11959938017f"
+      },
+      "requires_remote_code": true,
+      "sources": [
+        {
+          "kind": "model_card",
+          "url": "https://huggingface.co/Snowflake/snowflake-arctic-embed-m-v2.0/blob/95c2741480856aa9666782eb4afe11959938017f/README.md",
+          "accessed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "model_id": "qwen3-embedding-0.6b",
+      "family": "qwen",
+      "upstream": {
+        "repo_id": "Qwen/Qwen3-Embedding-0.6B",
+        "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+      },
+      "license": {
+        "spdx": "Apache-2.0",
+        "redistribution_reviewed": true
+      },
+      "architecture": {
+        "native_dimensions": [
+          1024
+        ],
+        "supported_dimensions": [
+          1024,
+          768,
+          512
+        ],
+        "max_tokens": 32768,
+        "pooling": "last_token",
+        "l2_normalize": true,
+        "reduced_dimension_processing": "truncate_then_l2"
+      },
+      "text_convention": {
+        "query": {
+          "prefix": "Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery:",
+          "instruction_template": null
+        },
+        "document": {
+          "prefix": "",
+          "instruction_template": null
+        }
+      },
+      "tokenizer": {
+        "repo_id": "Qwen/Qwen3-Embedding-0.6B",
+        "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+      },
+      "requires_remote_code": false,
+      "sources": [
+        {
+          "kind": "model_card",
+          "url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B/blob/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3/README.md",
+          "accessed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "model_id": "embeddinggemma-300m",
+      "family": "embeddinggemma",
+      "upstream": {
+        "repo_id": "google/embeddinggemma-300m",
+        "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75"
+      },
+      "license": {
+        "spdx": "Gemma",
+        "redistribution_reviewed": false
+      },
+      "architecture": {
+        "native_dimensions": [
+          768
+        ],
+        "supported_dimensions": [
+          768,
+          512,
+          256
+        ],
+        "max_tokens": 2048,
+        "pooling": "sentence_embedding",
+        "l2_normalize": true,
+        "reduced_dimension_processing": "truncate_then_l2"
+      },
+      "text_convention": {
+        "query": {
+          "prefix": "task: search result | query: ",
+          "instruction_template": null
+        },
+        "document": {
+          "prefix": "title: none | text: ",
+          "instruction_template": null
+        }
+      },
+      "tokenizer": {
+        "repo_id": "google/embeddinggemma-300m",
+        "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75"
+      },
+      "requires_remote_code": false,
+      "sources": [
+        {
+          "kind": "model_card",
+          "url": "https://huggingface.co/google/embeddinggemma-300m/blob/57c266a740f537b4dc058e1b0cda161fd15afa75/README.md",
+          "accessed": "2026-10-02"
+        }
+      ],
+      "status": "skipped",
+      "reason": "Original repository manually gated; authorized access unavailable. No derivative used to bypass access."
+    },
+    {
+      "model_id": "voyage-4-nano",
+      "family": "voyage",
+      "upstream": {
+        "repo_id": "voyageai/voyage-4-nano",
+        "revision": "67fabc9bef010dabc5f6024aa1b1b6b93410426f"
+      },
+      "license": {
+        "spdx": "Apache-2.0",
+        "redistribution_reviewed": true
+      },
+      "architecture": {
+        "native_dimensions": [
+          2048
+        ],
+        "supported_dimensions": [
+          2048,
+          1024,
+          512
+        ],
+        "max_tokens": 32000,
+        "pooling": "masked_mean",
+        "l2_normalize": true,
+        "reduced_dimension_processing": "truncate_then_l2",
+        "projection": "learned 1024 to 2048 in model; ONNX output includes this head"
+      },
+      "text_convention": {
+        "query": {
+          "prefix": "Represent the query for retrieving supporting documents: ",
+          "instruction_template": null
+        },
+        "document": {
+          "prefix": "Represent the document for retrieval: ",
+          "instruction_template": null
+        }
+      },
+      "tokenizer": {
+        "repo_id": "voyageai/voyage-4-nano",
+        "revision": "67fabc9bef010dabc5f6024aa1b1b6b93410426f"
+      },
+      "requires_remote_code": true,
+      "sources": [
+        {
+          "kind": "model_card",
+          "url": "https://huggingface.co/voyageai/voyage-4-nano/blob/67fabc9bef010dabc5f6024aa1b1b6b93410426f/README.md",
+          "accessed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "model_id": "nomic-embed-text-v1.5",
+      "family": "nomic",
+      "upstream": {
+        "repo_id": "nomic-ai/nomic-embed-text-v1.5",
+        "revision": "e9b6763023c676ca8431644204f50c2b100d9aab"
+      },
+      "license": {
+        "spdx": "Apache-2.0",
+        "redistribution_reviewed": true
+      },
+      "architecture": {
+        "native_dimensions": [
+          768
+        ],
+        "supported_dimensions": [
+          768,
+          512,
+          256
+        ],
+        "max_tokens": 8192,
+        "pooling": "masked_mean",
+        "l2_normalize": true,
+        "reduced_dimension_processing": "full_layer_norm_then_truncate_l2",
+        "gguf_max_tokens": 2048
+      },
+      "text_convention": {
+        "query": {
+          "prefix": "search_query: ",
+          "instruction_template": null
+        },
+        "document": {
+          "prefix": "search_document: ",
+          "instruction_template": null
+        }
+      },
+      "tokenizer": {
+        "repo_id": "nomic-ai/nomic-embed-text-v1.5",
+        "revision": "e9b6763023c676ca8431644204f50c2b100d9aab"
+      },
+      "requires_remote_code": true,
+      "sources": [
+        {
+          "kind": "model_card",
+          "url": "https://huggingface.co/nomic-ai/nomic-embed-text-v1.5/blob/e9b6763023c676ca8431644204f50c2b100d9aab/README.md",
+          "accessed": "2026-10-02"
+        }
+      ]
+    }
+  ]
+}

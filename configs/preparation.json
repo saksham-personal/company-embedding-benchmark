@@ -1,0 +1,424 @@
+{
+  "schema_version": 1,
+  "github_repository": "saksham-personal/company-embedding-benchmark",
+  "release": "assets-v1",
+  "artifacts": [
+    {
+      "artifact_id": "bge-base-en-v1.5-pytorch-fp32",
+      "model_id": "bge-base-en-v1.5",
+      "runtime": "pytorch",
+      "precision": "fp32",
+      "weight_files": [
+        "model.safetensors"
+      ],
+      "downloaded_files": [
+        {
+          "path": "model.safetensors",
+          "sha256": "c7c1988aae201f80cf91a5dbbd5866409503b89dcaba877ca6dba7dd0a5167d7",
+          "size": 437955512
+        }
+      ],
+      "source": {
+        "repo_id": "BAAI/bge-base-en-v1.5",
+        "revision": "a5beb1e3e68b9ab74eb54cfd186867f64f240e1a"
+      },
+      "source_key": "bge-base-en-v1.5"
+    },
+    {
+      "artifact_id": "bge-base-en-v1.5-onnx-fp32",
+      "model_id": "bge-base-en-v1.5",
+      "runtime": "onnx",
+      "precision": "fp32",
+      "weight_files": [
+        "onnx/model.onnx"
+      ],
+      "downloaded_files": [
+        {
+          "path": "onnx/model.onnx",
+          "sha256": "9bc579acdba21c253c62a9bf866891355a63ffa3442b52c8a37d75b2ccb91848",
+          "size": 435811539
+        }
+      ],
+      "source": {
+        "repo_id": "BAAI/bge-base-en-v1.5",
+        "revision": "a5beb1e3e68b9ab74eb54cfd186867f64f240e1a"
+      },
+      "source_key": "bge-base-en-v1.5"
+    },
+    {
+      "artifact_id": "bge-base-en-v1.5-onnx-int8",
+      "model_id": "bge-base-en-v1.5",
+      "runtime": "onnx",
+      "precision": "int8",
+      "weight_files": [
+        "onnx/model_int8.onnx"
+      ],
+      "downloaded_files": [
+        {
+          "path": "onnx/model_int8.onnx",
+          "sha256": "b83dfe249580ff1c2d0dcebe61ee565b1f6dcd5c2469632773d4508b9efd0889",
+          "size": 109622386
+        }
+      ],
+      "source": {
+        "repo_id": "Xenova/bge-base-en-v1.5",
+        "revision": "4d6cd88e18e51a5e020c2c305726d76ada9c03cf"
+      },
+      "source_key": "bge-community"
+    },
+    {
+      "artifact_id": "e5-base-v2-pytorch-fp32",
+      "model_id": "e5-base-v2",
+      "runtime": "pytorch",
+      "precision": "fp32",
+      "weight_files": [
+        "model.safetensors"
+      ],
+      "downloaded_files": [
+        {
+          "path": "model.safetensors",
+          "sha256": "d0d559c47d5f71b1d280b13b62a2657f3e3bc70c0786f9ab91a36545e6a8f693",
+          "size": 437955512
+        }
+      ],
+      "source": {
+        "repo_id": "intfloat/e5-base-v2",
+        "revision": "f52bf8ec8c7124536f0efb74aca902b2995e5bcd"
+      },
+      "source_key": "e5-base-v2"
+    },
+    {
+      "artifact_id": "e5-base-v2-onnx-fp32",
+      "model_id": "e5-base-v2",
+      "runtime": "onnx",
+      "precision": "fp32",
+      "weight_files": [
+        "onnx/model.onnx"
+      ],
+      "downloaded_files": [
+        {
+          "path": "onnx/model.onnx",
+          "sha256": "157f97ef1957d34f52efa26f8031371bf9043acc45460cec7ebe94631ac0e96b",
+          "size": 435811516
+        }
+      ],
+      "source": {
+        "repo_id": "intfloat/e5-base-v2",
+        "revision": "f52bf8ec8c7124536f0efb74aca902b2995e5bcd"
+      },
+      "source_key": "e5-base-v2"
+    },
+    {
+      "artifact_id": "e5-base-v2-onnx-int8-avx512-vnni",
+      "model_id": "e5-base-v2",
+      "runtime": "onnx",
+      "precision": "int8",
+      "weight_files": [
+        "onnx/model_qint8_avx512_vnni.onnx"
+      ],
+      "downloaded_files": [
+        {
+          "path": "onnx/model_qint8_avx512_vnni.onnx",
+          "sha256": "f2ff55f62dfca9ce0f4a5656ae0b1571b9fbc5e15eda3b2c56dd32f329b2005e",
+          "size": 110121976
+        }
+      ],
+      "source": {
+        "repo_id": "intfloat/e5-base-v2",
+        "revision": "f52bf8ec8c7124536f0efb74aca902b2995e5bcd"
+      },
+      "source_key": "e5-base-v2"
+    },
+    {
+      "artifact_id": "gte-base-en-v1.5-pytorch-fp32",
+      "model_id": "gte-base-en-v1.5",
+      "runtime": "pytorch",
+      "precision": "fp32",
+      "weight_files": [
+        "model.safetensors"
+      ],
+      "downloaded_files": [
+        {
+          "path": "model.safetensors",
+          "sha256": "c30d96b914af1a141db13075863e666dee17daa5f844d506e07c88cd9ab12d2b",
+          "size": 547119128
+        }
+      ],
+      "source": {
+        "repo_id": "Alibaba-NLP/gte-base-en-v1.5",
+        "revision": "a829fd0e060bb84554da0dfd354d0de0f7712b7f"
+      },
+      "source_key": "gte-base-en-v1.5"
+    },
+    {
+      "artifact_id": "gte-base-en-v1.5-onnx-fp32",
+      "model_id": "gte-base-en-v1.5",
+      "runtime": "onnx",
+      "precision": "fp32",
+      "weight_files": [
+        "onnx/model.onnx"
+      ],
+      "downloaded_files": [
+        {
+          "path": "onnx/model.onnx",
+          "sha256": "d908f84171c304a863061cde3eaf29f9f7ec9206068f9b3a5b97323fa7b2811e",
+          "size": 555854571
+        }
+      ],
+      "source": {
+        "repo_id": "Alibaba-NLP/gte-base-en-v1.5",
+        "revision": "a829fd0e060bb84554da0dfd354d0de0f7712b7f"
+      },
+      "source_key": "gte-base-en-v1.5"
+    },
+    {
+      "artifact_id": "gte-base-en-v1.5-onnx-int8",
+      "model_id": "gte-base-en-v1.5",
+      "runtime": "onnx",
+      "precision": "int8",
+      "weight_files": [
+        "onnx/model_int8.onnx"
+      ],
+      "downloaded_files": [
+        {
+          "path": "onnx/model_int8.onnx",
+          "sha256": "e7f6af7a9457d4fdd3af220c68e9a37325aad7c2d306bbc855fe0d019c326509",
+          "size": 146540971
+        }
+      ],
+      "source": {
+        "repo_id": "Alibaba-NLP/gte-base-en-v1.5",
+        "revision": "a829fd0e060bb84554da0dfd354d0de0f7712b7f"
+      },
+      "source_key": "gte-base-en-v1.5"
+    },
+    {
+      "artifact_id": "arctic-embed-m-v2-pytorch-fp32",
+      "model_id": "arctic-embed-m-v2",
+      "runtime": "pytorch",
+      "precision": "fp32",
+      "weight_files": [
+        "model.safetensors"
+      ],
+      "downloaded_files": [
+        {
+          "path": "model.safetensors",
+          "sha256": "3d80d4727ac8759fb8624b690697c053a3d1992120111dc4a71178e608c26604",
+          "size": 1221487872
+        }
+      ],
+      "source": {
+        "repo_id": "Snowflake/snowflake-arctic-embed-m-v2.0",
+        "revision": "95c2741480856aa9666782eb4afe11959938017f"
+      },
+      "source_key": "arctic-embed-m-v2"
+    },
+    {
+      "artifact_id": "arctic-embed-m-v2-onnx-fp32",
+      "model_id": "arctic-embed-m-v2",
+      "runtime": "onnx",
+      "precision": "fp32",
+      "weight_files": [
+        "onnx/model.onnx"
+      ],
+      "downloaded_files": [
+        {
+          "path": "onnx/model.onnx",
+          "sha256": "c0c53d7f49a2db60761b92b7bbf5be87a7b3cf5d92dbbd7f1b5028bd5a40aa39",
+          "size": 1226099913
+        }
+      ],
+      "source": {
+        "repo_id": "Snowflake/snowflake-arctic-embed-m-v2.0",
+        "revision": "95c2741480856aa9666782eb4afe11959938017f"
+      },
+      "source_key": "arctic-embed-m-v2"
+    },
+    {
+      "artifact_id": "arctic-embed-m-v2-onnx-int8",
+      "model_id": "arctic-embed-m-v2",
+      "runtime": "onnx",
+      "precision": "int8",
+      "weight_files": [
+        "onnx/model_int8.onnx"
+      ],
+      "downloaded_files": [
+        {
+          "path": "onnx/model_int8.onnx",
+          "sha256": "03d923bb1850ebdccb068e2f3abd8aa43fe81c50d07d037ef103fe3d0fb78e3b",
+          "size": 310916060
+        }
+      ],
+      "source": {
+        "repo_id": "Snowflake/snowflake-arctic-embed-m-v2.0",
+        "revision": "95c2741480856aa9666782eb4afe11959938017f"
+      },
+      "source_key": "arctic-embed-m-v2"
+    },
+    {
+      "artifact_id": "qwen3-embedding-0.6b-pytorch-reference",
+      "model_id": "qwen3-embedding-0.6b",
+      "runtime": "pytorch",
+      "precision": "reference",
+      "weight_files": [
+        "model.safetensors"
+      ],
+      "downloaded_files": [
+        {
+          "path": "model.safetensors",
+          "sha256": "0437e45c94563b09e13cb7a64478fc406947a93cb34a7e05870fc8dcd48e23fd",
+          "size": 1191586416
+        }
+      ],
+      "source": {
+        "repo_id": "Qwen/Qwen3-Embedding-0.6B",
+        "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+      },
+      "source_key": "qwen3-embedding-0.6b"
+    },
+    {
+      "artifact_id": "qwen3-embedding-0.6b-onnx-int8",
+      "model_id": "qwen3-embedding-0.6b",
+      "runtime": "onnx",
+      "precision": "int8",
+      "weight_files": [
+        "onnx/model_int8.onnx"
+      ],
+      "downloaded_files": [
+        {
+          "path": "onnx/model_int8.onnx",
+          "sha256": "6d0ea863f78b4a84afa3c7fcba1ec341572b5e28121aef77b7092b1dfdf679c7",
+          "size": 613527539
+        }
+      ],
+      "source": {
+        "repo_id": "onnx-community/Qwen3-Embedding-0.6B-ONNX",
+        "revision": "c25a394dd583836952667c12f008335071b3f43d"
+      },
+      "source_key": "qwen-community"
+    },
+    {
+      "artifact_id": "voyage-4-nano-pytorch-reference",
+      "model_id": "voyage-4-nano",
+      "runtime": "pytorch",
+      "precision": "reference",
+      "weight_files": [
+        "model.safetensors"
+      ],
+      "downloaded_files": [
+        {
+          "path": "model.safetensors",
+          "sha256": "3dae0c63c81dcab79ac213af331940a1bf2b8a53ec8646be878552890291ad30",
+          "size": 692919112
+        }
+      ],
+      "source": {
+        "repo_id": "voyageai/voyage-4-nano",
+        "revision": "67fabc9bef010dabc5f6024aa1b1b6b93410426f"
+      },
+      "source_key": "voyage-4-nano"
+    },
+    {
+      "artifact_id": "voyage-4-nano-onnx-int8",
+      "model_id": "voyage-4-nano",
+      "runtime": "onnx",
+      "precision": "int8",
+      "weight_files": [
+        "onnx/model_quantized.onnx",
+        "onnx/model_quantized.onnx_data"
+      ],
+      "downloaded_files": [
+        {
+          "path": "onnx/model_quantized.onnx",
+          "sha256": "e2999ae63b575e34b7bef6a513f48c7f7701cebfb1bfffcb9db23ab0db324157",
+          "size": 268076
+        },
+        {
+          "path": "onnx/model_quantized.onnx_data",
+          "sha256": "db94fc1655db1a1b55f67f7019ebbd803142f54e1bd83cfd1c2d6faadd6a648c",
+          "size": 421625856
+        }
+      ],
+      "source": {
+        "repo_id": "onnx-community/voyage-4-nano-ONNX",
+        "revision": "fb6f32cceb63b6eac92e1fdc08e00d03c41cdf5a"
+      },
+      "source_key": "voyage-community"
+    },
+    {
+      "artifact_id": "nomic-embed-text-v1.5-pytorch-fp32",
+      "model_id": "nomic-embed-text-v1.5",
+      "runtime": "pytorch",
+      "precision": "fp32",
+      "weight_files": [
+        "model.safetensors"
+      ],
+      "downloaded_files": [
+        {
+          "path": "model.safetensors",
+          "sha256": "9e7d262b1fe5ea350782829496efa831901b77486bbde1cea54a4c822d010d5c",
+          "size": 546938168
+        }
+      ],
+      "source": {
+        "repo_id": "nomic-ai/nomic-embed-text-v1.5",
+        "revision": "e9b6763023c676ca8431644204f50c2b100d9aab"
+      },
+      "source_key": "nomic-embed-text-v1.5"
+    },
+    {
+      "artifact_id": "nomic-embed-text-v1.5-onnx-int8",
+      "model_id": "nomic-embed-text-v1.5",
+      "runtime": "onnx",
+      "precision": "int8",
+      "weight_files": [
+        "onnx/model_int8.onnx"
+      ],
+      "downloaded_files": [
+        {
+          "path": "onnx/model_int8.onnx",
+          "sha256": "b4342336debaea79de872370664b0aaeb67dea4605513d00ee236ea871a81f27",
+          "size": 137296292
+        }
+      ],
+      "source": {
+        "repo_id": "nomic-ai/nomic-embed-text-v1.5",
+        "revision": "e9b6763023c676ca8431644204f50c2b100d9aab"
+      },
+      "source_key": "nomic-embed-text-v1.5"
+    },
+    {
+      "artifact_id": "nomic-embed-text-v1.5-gguf-q4_k_m",
+      "model_id": "nomic-embed-text-v1.5",
+      "runtime": "gguf",
+      "precision": "q4_k_m",
+      "weight_files": [
+        "nomic-embed-text-v1.5.Q4_K_M.gguf"
+      ],
+      "downloaded_files": [
+        {
+          "path": "nomic-embed-text-v1.5.Q4_K_M.gguf",
+          "sha256": "d4e388894e09cf3816e8b0896d81d265b55e7a9fff9ab03fe8bf4ef5e11295ac",
+          "size": 84106624
+        }
+      ],
+      "source": {
+        "repo_id": "nomic-ai/nomic-embed-text-v1.5-GGUF",
+        "revision": "0188c9bf409793f810680a5a431e7b899c46104c"
+      },
+      "source_key": "nomic-gguf"
+    }
+  ],
+  "code_dependencies": {
+    "gte-base-en-v1.5": {
+      "repo_id": "Alibaba-NLP/new-impl",
+      "revision": "40ced75c3017eb27626c9d4ea981bde21a2662f4",
+      "source_key": "gte-code"
+    },
+    "nomic-embed-text-v1.5": {
+      "repo_id": "nomic-ai/nomic-bert-2048",
+      "revision": "7710840340a098cfb869c4f65e87cf2b1b70caca",
+      "source_key": "nomic-code"
+    }
+  }
+}

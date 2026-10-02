@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "platform": "windows-x86_64-cpu",
+  "release": "b11146",
+  "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11146/llama-b11146-bin-win-cpu-x64.zip",
+  "sha256": "14cf1303ca9ac3abd94816850532f9f9a69ac66fbaca3776fc6f9061c2fac1d1",
+  "size_bytes": 18560055,
+  "executable": "llama-server.exe",
+  "license": "MIT",
+  "source": "https://github.com/ggml-org/llama.cpp",
+  "cpu_only": true
+}

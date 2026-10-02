@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "datasets": [{
+    "dataset_id": "beir-scifact",
+    "github": {"repository": "saksham-personal/company-embedding-benchmark", "release": "assets-v1", "asset": "beir-scifact.zip"},
+    "archive_sha256": "536e14446a0ba56ed1398ab1055f39fe852686ecad24a6306c80c490fa8e0165",
+    "archive_format": "zip",
+    "extracted_subdir": "scifact",
+    "license": {"corpus": "ODC-By-1.0", "queries_qrels": "CC-BY-4.0", "url": "https://github.com/allenai/scifact/blob/master/LICENSE.md"},
+    "source": {"url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/scifact.zip", "revision": "sha256:536e14446a0ba56ed1398ab1055f39fe852686ecad24a6306c80c490fa8e0165", "published_md5": "5f7d1de60b170fc8027bb7898e2efca1"},
+    "split": "test",
+    "expected_corpus_count": 5183,
+    "expected_query_count": 300,
+    "attribution": "SciFact: Wadden et al., Fact or Fiction: Verifying Scientific Claims (EMNLP 2020); BEIR: Thakur et al. (NeurIPS 2021). BEIR-format test split, no published scores copied."
+  }]
+}
