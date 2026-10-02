@@ -5,6 +5,11 @@ results/**/*.npz
 results/**/embedding-cache/
 data/processed/**
 !data/processed/.gitkeep
+data/private/**
+private_data/**
+runtime/**
+wheelhouse/**
+offline-environment/**
 .venv/
 __pycache__/
 *.py[cod]

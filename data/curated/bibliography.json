@@ -1,0 +1,782 @@
+[
+  {
+    "company_id": "bluelinx",
+    "url": "https://bluelinxco.com/",
+    "title": "BlueLinx - Building Products Distributor - Home",
+    "web_evidence_ref": "turn11view1"
+  },
+  {
+    "company_id": "us-lumber",
+    "url": "https://www.uslumber.com/",
+    "title": "Home - U.S. LUMBER",
+    "web_evidence_ref": "turn11view3"
+  },
+  {
+    "company_id": "weyerhaeuser-distribution",
+    "url": "https://www.weyerhaeuser.com/woodproducts/distribution/",
+    "title": "Distribution :: Weyerhaeuser",
+    "web_evidence_ref": "turn12view5"
+  },
+  {
+    "company_id": "hardwoods",
+    "url": "https://hardwoods-inc.com/",
+    "title": "Hardwoods Specialty Products - Home",
+    "web_evidence_ref": "turn18view0"
+  },
+  {
+    "company_id": "austin-hardwoods",
+    "url": "https://www.austinhardwoods.com/",
+    "title": "Home - Austin Hardwoods",
+    "web_evidence_ref": "turn12view2"
+  },
+  {
+    "company_id": "84-lumber",
+    "url": "https://www.84lumber.com/",
+    "title": "Lumber Yard | Building Materials Supplier | 84 Lumber",
+    "web_evidence_ref": "turn12view3"
+  },
+  {
+    "company_id": "builders-firstsource",
+    "url": "https://www.bldr.com/",
+    "title": "Builders FirstSource | Building Supplies & Materials",
+    "web_evidence_ref": "turn12view4"
+  },
+  {
+    "company_id": "baillie",
+    "url": "https://www.baillie.com/",
+    "title": "North American Hardwood Lumber from Baillie",
+    "web_evidence_ref": "turn15view0"
+  },
+  {
+    "company_id": "midwest-hardwood",
+    "url": "https://midwesthardwood.com/",
+    "title": "Homepage - Midwest Hardwood Company",
+    "web_evidence_ref": "turn17view0"
+  },
+  {
+    "company_id": "paxton",
+    "url": "https://paxtonwood.com/",
+    "title": "Paxton Lumber - PaxtonWood",
+    "web_evidence_ref": "turn14view0"
+  },
+  {
+    "company_id": "conklin",
+    "url": "https://www.conklinmetal.com/",
+    "title": "Conklin Metal Industries | Home",
+    "web_evidence_ref": "turn23view0"
+  },
+  {
+    "company_id": "nortek",
+    "url": "https://www.nortekair.com/",
+    "title": "Nortek Air Solutions - Custom HVAC Manufacturer",
+    "web_evidence_ref": "turn25view0"
+  },
+  {
+    "company_id": "greenheck",
+    "url": "https://www.greenheck.com/",
+    "title": "Air Movement, Control & Conditioning Products",
+    "web_evidence_ref": "turn27view0"
+  },
+  {
+    "company_id": "camfil",
+    "url": "https://www.camfil.com/en-us",
+    "title": "Air filters & air filtration solutions - USA - Camfil",
+    "web_evidence_ref": "turn24view0"
+  },
+  {
+    "company_id": "modine-hvac",
+    "url": "https://www.modinehvac.com/",
+    "title": "Home – Modine HVAC",
+    "web_evidence_ref": "turn22view0"
+  },
+  {
+    "company_id": "hart-cooley",
+    "url": "https://www.hartandcooley.com/",
+    "title": "Home | Hart & Cooley",
+    "web_evidence_ref": "turn21view0"
+  },
+  {
+    "company_id": "titus",
+    "url": "https://www.titus-hvac.com/",
+    "title": "Titus HVAC | Engineering Innovative Air Distribution Solutions | Redefine Your Comfort Zone",
+    "web_evidence_ref": "turn29view0"
+  },
+  {
+    "company_id": "evapco",
+    "url": "https://www.evapco.com/",
+    "title": "EVAPCO Home Page | EVAPCO",
+    "web_evidence_ref": "turn35view0"
+  },
+  {
+    "company_id": "heatcraft",
+    "url": "https://www.heatcraftrpd.com/",
+    "title": "The market leader in Commercial Refrigeration - Heatcraft Refrigeration Products",
+    "web_evidence_ref": "turn33view0"
+  },
+  {
+    "company_id": "cooney",
+    "url": "https://cooneytechnologies.com/",
+    "title": "Cooney Technologies | Heat Transfer Solutions",
+    "web_evidence_ref": "turn36view0"
+  },
+  {
+    "company_id": "ferguson",
+    "url": "https://www.ferguson.com/",
+    "title": "Plumbing Supplies, HVAC Parts, Pipe, Valves & Fittings – Ferguson",
+    "web_evidence_ref": "turn34view0"
+  },
+  {
+    "company_id": "johnstone",
+    "url": "https://www.johnstonesupply.com/",
+    "title": "Johnstone Supply | Wholesale Distributor to the HVAC, Refrigeration and Property Maintenance Industries",
+    "web_evidence_ref": "turn32view0"
+  },
+  {
+    "company_id": "coilcraft",
+    "url": "https://www.coilcraft.com/en-us/products/rf/",
+    "title": "RF Inductors | Coilcraft",
+    "web_evidence_ref": "turn31search1"
+  },
+  {
+    "company_id": "intertek",
+    "url": "https://www.intertek.com/",
+    "title": "Intertek",
+    "web_evidence_ref": "turn49view0"
+  },
+  {
+    "company_id": "sgs",
+    "url": "https://ticmall.sgs.com/en/about_us",
+    "title": "About Us | SGS TIC Mall",
+    "web_evidence_ref": "turn79search7"
+  },
+  {
+    "company_id": "bureau-veritas",
+    "url": "https://group.bureauveritas.com/about-us/expertise",
+    "title": "Our expertise: testing, inspection & certification | Bureau Veritas",
+    "web_evidence_ref": "turn79search1"
+  },
+  {
+    "company_id": "element",
+    "url": "https://www.element.com/",
+    "title": "Element | Experts in Testing, Inspection & Certification",
+    "web_evidence_ref": "turn50view0"
+  },
+  {
+    "company_id": "nqa",
+    "url": "https://www.nqa.com/en-us",
+    "title": "NQA Certification Body | Global Audit Services",
+    "web_evidence_ref": "turn47view0"
+  },
+  {
+    "company_id": "lrqa",
+    "url": "https://www.lrqa.com/en-us/",
+    "title": "LRQA – Assurance, Certification, Inspection, Training",
+    "web_evidence_ref": "turn40view0"
+  },
+  {
+    "company_id": "bsi",
+    "url": "https://www.bsigroup.com/en-US/",
+    "title": "Accelerating Progress Towards a Sustainable World | BSI",
+    "web_evidence_ref": "turn51view0"
+  },
+  {
+    "company_id": "tuv-sud",
+    "url": "https://www.tuvsud.com/en-us",
+    "title": "TÜV SÜD Home - Add value. Inspire trust. | TÜV SÜD",
+    "web_evidence_ref": "turn43view0"
+  },
+  {
+    "company_id": "tuv-rheinland",
+    "url": "https://www.tuv.com/usa/en/",
+    "title": "TÜV Rheinland - Home | US | TÜV Rheinland",
+    "web_evidence_ref": "turn48view0"
+  },
+  {
+    "company_id": "smithers",
+    "url": "https://www.smithers.com/home",
+    "title": "Smithers - Accurate Data, On Time, High Touch",
+    "web_evidence_ref": "turn39view0"
+  },
+  {
+    "company_id": "kiwa",
+    "url": "https://www.kiwa.com/us/en-us/",
+    "title": "Kiwa USA",
+    "web_evidence_ref": "turn45view0"
+  },
+  {
+    "company_id": "smile-doctors",
+    "url": "https://smiledoctors.com/",
+    "title": "Orthodontist Near You for Braces & Invisalign | Smile Doctors",
+    "web_evidence_ref": "turn52view0"
+  },
+  {
+    "company_id": "smile-brands",
+    "url": "https://smilebrands.com/",
+    "title": "Home | Smile Brands",
+    "web_evidence_ref": "turn65view0"
+  },
+  {
+    "company_id": "heartland",
+    "url": "https://heartland.com/",
+    "title": "Heartland Dental | America’s Leading Dental Support Organization",
+    "web_evidence_ref": "turn56view0"
+  },
+  {
+    "company_id": "dentalcorp",
+    "url": "https://www.dentalcorp.com/site/home",
+    "title": "Dentalcorp | Network of Dental Practices in Canada",
+    "web_evidence_ref": "turn64view0"
+  },
+  {
+    "company_id": "dentrix",
+    "url": "https://www.dentrix.com/",
+    "title": "All-in-One Dental Practice Management Platform | Dentrix",
+    "web_evidence_ref": "turn58view0"
+  },
+  {
+    "company_id": "planet-dds",
+    "url": "https://www.planetdds.com/",
+    "title": "Planet DDS: DentalOS Solutions for Growth",
+    "web_evidence_ref": "turn66view0"
+  },
+  {
+    "company_id": "dentistry-children",
+    "url": "https://dentistry4children.com/",
+    "title": "Pediatric Dentistry | Atlanta, GA | Dentistry for Children",
+    "web_evidence_ref": "turn60view0"
+  },
+  {
+    "company_id": "pediatric-associates",
+    "url": "https://pediatricdentalassociates.com/",
+    "title": "Pediatric Dentist in Philadelphia & Cherry Hill | Pediatric Dental Associates",
+    "web_evidence_ref": "turn79search0"
+  },
+  {
+    "company_id": "dental-associates-kids",
+    "url": "https://dentalassociateskids.com/",
+    "title": "Pediatric Dentist in Connecticut | Dental Associates KIDS",
+    "web_evidence_ref": "turn79search5"
+  },
+  {
+    "company_id": "pediatric-manchester",
+    "url": "https://www.pediatricdental.com/",
+    "title": "Pediatric Dentist in Manchester, CT | Pediatric Dental Associates",
+    "web_evidence_ref": "turn79search8"
+  },
+  {
+    "company_id": "dental-associates",
+    "url": "https://www.dentalassociates.com/",
+    "title": "Dental Associates - Dental care for your entire family",
+    "web_evidence_ref": "turn72view0"
+  },
+  {
+    "company_id": "42north",
+    "url": "https://www.42northdental.com/",
+    "title": "42 North Dental | Setting a New Standard",
+    "web_evidence_ref": "turn77view0"
+  },
+  {
+    "company_id": "vizient",
+    "url": "https://www.vizient.com/",
+    "title": "Vizient — Who healthcare leaders turn to",
+    "web_evidence_ref": "turn67view0"
+  },
+  {
+    "company_id": "healthtrust",
+    "url": "https://healthtrustpg.com/",
+    "title": "HealthTrust - Performance Improvement For Healthcare",
+    "web_evidence_ref": "turn59view0"
+  },
+  {
+    "company_id": "omnia",
+    "url": "https://www.omniapartners.com/",
+    "title": "The Modern Purchasing Organization | OMNIA Partners",
+    "web_evidence_ref": "turn54view0"
+  },
+  {
+    "company_id": "sourcewell",
+    "url": "https://www.sourcewell-mn.gov/",
+    "title": "Sourcewell | Cooperative Purchasing Advantages",
+    "web_evidence_ref": "turn68view0"
+  },
+  {
+    "company_id": "avendra",
+    "url": "https://www.avendra.com/",
+    "title": "Global procurement with local expertise | Avendra International",
+    "web_evidence_ref": "turn61view0"
+  },
+  {
+    "company_id": "procurated",
+    "url": "https://home.procurated.com/",
+    "title": "Procurated |",
+    "web_evidence_ref": "turn55view0"
+  },
+  {
+    "company_id": "dining-alliance",
+    "url": "https://diningalliance.com/",
+    "title": "Dining Alliance | Leading Restaurant GPO and Buying Group",
+    "web_evidence_ref": "turn76view0"
+  },
+  {
+    "company_id": "foodbuy",
+    "url": "https://www.foodbuy.com/",
+    "title": "Foodbuy - Food Procurement & Group Purchasing Solutions",
+    "web_evidence_ref": "turn70view0"
+  },
+  {
+    "company_id": "ats",
+    "url": "https://www.advancedtech.com/",
+    "title": "Industrial Contract Maintenance | ATS",
+    "web_evidence_ref": "turn81view0"
+  },
+  {
+    "company_id": "premier-tech",
+    "url": "https://www.premiertech.com/",
+    "title": "Premier Tech : Who we are and what we do",
+    "web_evidence_ref": "turn86view0"
+  },
+  {
+    "company_id": "tdindustries",
+    "url": "https://www.tdindustries.com/",
+    "title": "TDIndustries | Mechanical Construction and Facility Services",
+    "web_evidence_ref": "turn88view0"
+  },
+  {
+    "company_id": "emcor",
+    "url": "https://emcorgroup.com/",
+    "title": "EMCOR Group, Inc. | Mechanical & Electrical Construction, Energy & Facilities Services, Sustainability &amp; Green Building Solutions",
+    "web_evidence_ref": "turn89view0"
+  },
+  {
+    "company_id": "brintons",
+    "url": "https://www.brintons.net/",
+    "title": "Brintons Fine Carpet for Hotels, Casinos, Airports, Healthcare, Ships",
+    "web_evidence_ref": "turn80view0"
+  },
+  {
+    "company_id": "team",
+    "url": "https://www.teaminc.com/",
+    "title": "TEAM, Inc. | Asset Integrity, Inspection & Mechanical Services",
+    "web_evidence_ref": "turn91view0"
+  },
+  {
+    "company_id": "mistras",
+    "url": "https://www.mistrasgroup.com/",
+    "title": "Be a step ahead for Asset Protection Solutions | MISTRAS Group",
+    "web_evidence_ref": "turn85view0"
+  },
+  {
+    "company_id": "ensinger",
+    "url": "https://www.ensingerplastics.com/en-us",
+    "title": "High-performance plastic solutions | Ensinger",
+    "web_evidence_ref": "turn83view0"
+  },
+  {
+    "company_id": "protolabs",
+    "url": "https://www.protolabs.com/",
+    "title": "Protolabs | Rapid Prototyping & On-demand Production Services",
+    "web_evidence_ref": "turn84view0"
+  },
+  {
+    "company_id": "fictiv",
+    "url": "https://www.fictiv.com/",
+    "title": "Fictiv: Sourcing Simplified for Custom Manufacturing Services",
+    "web_evidence_ref": "turn87view0"
+  },
+  {
+    "company_id": "xometry",
+    "url": "https://www.xometry.com/",
+    "title": "Custom Manufacturing on Demand | Production Parts and Prototypes | Xometry",
+    "web_evidence_ref": "turn90view0"
+  },
+  {
+    "company_id": "pace",
+    "url": "https://paceind.com/",
+    "title": "Pace Industries | North America's Die Casting Leader",
+    "web_evidence_ref": "turn82view0"
+  },
+  {
+    "company_id": "lineage",
+    "url": "https://www.onelineage.com/",
+    "title": "Lineage | Global Cold Storage Warehousing & Integrated Solutions",
+    "web_evidence_ref": "turn103view0"
+  },
+  {
+    "company_id": "americold",
+    "url": "https://www.americold.com/",
+    "title": "Americold | Cold Chain Solutions",
+    "web_evidence_ref": "turn107view0"
+  },
+  {
+    "company_id": "uscold",
+    "url": "https://www.uscold.com/",
+    "title": "United States Cold Storage",
+    "web_evidence_ref": "turn95view0"
+  },
+  {
+    "company_id": "rls",
+    "url": "https://rlslogistics.com/",
+    "title": "Cold Chain 3PL Company | Cold Storage & Refrigerated Logistics | RLS Logistics",
+    "web_evidence_ref": "turn98view0"
+  },
+  {
+    "company_id": "dhl",
+    "url": "https://www.dhl.com/us-en/home.html",
+    "title": "DHL Home - Global Logistics and International Shipping United States of America",
+    "web_evidence_ref": "turn101view0"
+  },
+  {
+    "company_id": "gxo",
+    "url": "https://gxo.com/",
+    "title": "Logistics | GXO",
+    "web_evidence_ref": "turn92view0"
+  },
+  {
+    "company_id": "chrobinson",
+    "url": "https://www.chrobinson.com/en-us/",
+    "title": "C.H. Robinson | Third Party Logistics (3PL) & Supply Chain Management",
+    "web_evidence_ref": "turn100view0"
+  },
+  {
+    "company_id": "gallagher",
+    "url": "https://www.ajg.com/",
+    "title": "Insurance, Risk Management and Consulting | Gallagher",
+    "web_evidence_ref": "turn99view0"
+  },
+  {
+    "company_id": "amn",
+    "url": "https://www.amnhealthcare.com/",
+    "title": "Healthcare Staffing Company | AMN Healthcare",
+    "web_evidence_ref": "turn93view0"
+  },
+  {
+    "company_id": "aya",
+    "url": "https://www.ayahealthcare.com/",
+    "title": "Travel Nursing Agency | Ranked #1 by Nurses | Aya Healthcare",
+    "web_evidence_ref": "turn104view0"
+  },
+  {
+    "company_id": "jackson",
+    "url": "https://jacksonhealthcare.com/",
+    "title": "Home - Jackson Healthcare",
+    "web_evidence_ref": "turn105view0"
+  },
+  {
+    "company_id": "robert-half",
+    "url": "https://www.roberthalf.com/us/en",
+    "title": "Staffing, Recruitment & Job Search | Robert Half",
+    "web_evidence_ref": "turn102view0"
+  },
+  {
+    "company_id": "aerotek",
+    "url": "https://www.aerotek.com/en",
+    "title": "Recruiting & Staffing Agency - Hire Staff & Find Jobs - Aerotek",
+    "web_evidence_ref": "turn97view0"
+  },
+  {
+    "company_id": "servicetitan",
+    "url": "https://www.servicetitan.com/",
+    "title": "ServiceTitan - Home and Commercial Software for the Trades",
+    "web_evidence_ref": "turn110view0"
+  },
+  {
+    "company_id": "housecall",
+    "url": "https://www.housecallpro.com/",
+    "title": "Home Services Business Management Software - Housecall Pro",
+    "web_evidence_ref": "turn111view0"
+  },
+  {
+    "company_id": "jobber",
+    "url": "https://www.getjobber.com/",
+    "title": "The Top Home & Commercial Service Software in 2026 | Jobber",
+    "web_evidence_ref": "turn112view0"
+  },
+  {
+    "company_id": "servicemax",
+    "url": "https://www.ptc.com/en/products/servicemax",
+    "title": "ServiceMax: Asset-Centric Field Service Management | PTC",
+    "web_evidence_ref": "turn119view0"
+  },
+  {
+    "company_id": "procore",
+    "url": "https://www.procore.com/en-au",
+    "title": "Construction Project Management Software | Procore",
+    "web_evidence_ref": "turn118view0"
+  },
+  {
+    "company_id": "buildertrend",
+    "url": "https://buildertrend.com/",
+    "title": "Construction Project Management Software & App - Buildertrend",
+    "web_evidence_ref": "turn122view0"
+  },
+  {
+    "company_id": "rent-manager",
+    "url": "https://www.rentmanager.com/",
+    "title": "Rent Manager Property Management Software",
+    "web_evidence_ref": "turn116view0"
+  },
+  {
+    "company_id": "appfolio",
+    "url": "https://www.appfolio.com/",
+    "title": "AppFolio: Move Beyond Property Management Software",
+    "web_evidence_ref": "turn109view0"
+  },
+  {
+    "company_id": "buildium",
+    "url": "https://www.buildium.com/",
+    "title": "Buildium: Property Management Software",
+    "web_evidence_ref": "turn108view0"
+  },
+  {
+    "company_id": "entrata",
+    "url": "https://www.entrata.com/",
+    "title": "Property Management Software | Entrata®",
+    "web_evidence_ref": "turn120view0"
+  },
+  {
+    "company_id": "realpage",
+    "url": "https://www.realpage.com/",
+    "title": "Property Management Software, Analytics & AI | Realpage",
+    "web_evidence_ref": "turn121view0"
+  },
+  {
+    "company_id": "clio",
+    "url": "https://www.clio.com/",
+    "title": "Legal AI Software From a Global Legal Tech Leader | Clio",
+    "web_evidence_ref": "turn115view0"
+  },
+  {
+    "company_id": "mycase",
+    "url": "https://www.mycase.com/",
+    "title": "MyCase | Best legal practice management software | MyCase",
+    "web_evidence_ref": "turn113view0"
+  },
+  {
+    "company_id": "filevine",
+    "url": "https://www.filevine.com/",
+    "title": "Legal AI Platform for Law Firms & Legal Teams | LOIS",
+    "web_evidence_ref": "turn117view0"
+  },
+  {
+    "company_id": "bullhorn",
+    "url": "https://www.bullhorn.com/",
+    "title": "AI-Powered Online Recruitment Software for Agencies | Bullhorn",
+    "web_evidence_ref": "turn127view0"
+  },
+  {
+    "company_id": "avionte",
+    "url": "https://www.avionte.com/",
+    "title": "All-in-One Staffing Software | Avionté Staffing Software",
+    "web_evidence_ref": "turn131view0"
+  },
+  {
+    "company_id": "ukg",
+    "url": "https://www.ukg.com/",
+    "title": "UKG - HR, pay, and workforce management | UKG",
+    "web_evidence_ref": "turn133view0"
+  },
+  {
+    "company_id": "paylocity",
+    "url": "https://www.paylocity.com/",
+    "title": "Unify HR, Finance, & IT | HR & Payroll Simplified | Paylocity",
+    "web_evidence_ref": "turn126view0"
+  },
+  {
+    "company_id": "bamboohr",
+    "url": "https://www.bamboohr.com/",
+    "title": "BambooHR: The Complete HR Software for People, Payroll & Benefits",
+    "web_evidence_ref": "turn124view0"
+  },
+  {
+    "company_id": "gusto",
+    "url": "https://gusto.com/",
+    "title": "Gusto | Online HR Services: Payroll, Benefits and everything else",
+    "web_evidence_ref": "turn136view0"
+  },
+  {
+    "company_id": "toast",
+    "url": "https://pos.toasttab.com/",
+    "title": "Toast POS",
+    "web_evidence_ref": "turn125view0"
+  },
+  {
+    "company_id": "restaurant365",
+    "url": "https://www.restaurant365.com/",
+    "title": "Restaurant Management Software | Restaurant365",
+    "web_evidence_ref": "turn128view0"
+  },
+  {
+    "company_id": "lightspeed",
+    "url": "https://www.lightspeedhq.com/",
+    "title": "Lightspeed: Leading Point of Sale (POS) & Commerce Platform - Lightspeed",
+    "web_evidence_ref": "turn137view0"
+  },
+  {
+    "company_id": "mindbody",
+    "url": "https://www.mindbodyonline.com/",
+    "title": "Best Fitness & Wellness Management Software | Mindbody",
+    "web_evidence_ref": "turn134view0"
+  },
+  {
+    "company_id": "samsara",
+    "url": "https://www.samsara.com/",
+    "title": "Samsara | The Connected Operations Platform",
+    "web_evidence_ref": "turn138view0"
+  },
+  {
+    "company_id": "descartes",
+    "url": "https://www.descartes.com/",
+    "title": "Home | Descartes",
+    "web_evidence_ref": "turn123view0"
+  },
+  {
+    "company_id": "wisetech",
+    "url": "https://www.wisetechglobal.com/",
+    "title": "Changing the world of logistics and trade: WiseTech Global",
+    "web_evidence_ref": "turn132view0"
+  },
+  {
+    "company_id": "blackbaud",
+    "url": "https://www.blackbaud.com/",
+    "title": "Leading Software for Nonprofits and Education | Blackbaud",
+    "web_evidence_ref": "turn130view0"
+  },
+  {
+    "company_id": "simon",
+    "url": "https://www.simon.ai/",
+    "title": "Simon AI | Agentic Marketing Platform with the AI-First CDP",
+    "web_evidence_ref": "turn135view0"
+  },
+  {
+    "company_id": "nice-actimize",
+    "url": "https://www.niceactimize.com/",
+    "title": "Combat Financial Crime with AI-Driven AML and Fraud Solutions | NICE Actimize",
+    "web_evidence_ref": "turn147view0"
+  },
+  {
+    "company_id": "feedzai",
+    "url": "https://www.feedzai.com/",
+    "title": "AI-Native Fraud & Financial Crime Prevention Platform| Feedzai",
+    "web_evidence_ref": "turn142view0"
+  },
+  {
+    "company_id": "featurespace",
+    "url": "https://www.featurespace.com/",
+    "title": "Featurespace | Fraud and financial crime management",
+    "web_evidence_ref": "turn148view0"
+  },
+  {
+    "company_id": "neterium",
+    "url": "https://www.neterium.io/",
+    "title": "Neterium | Watchlist screening API",
+    "web_evidence_ref": "turn144view0"
+  },
+  {
+    "company_id": "quantexa",
+    "url": "https://www.quantexa.com/",
+    "title": "Quantexa - Context Behind Every Decision",
+    "web_evidence_ref": "turn145view0"
+  },
+  {
+    "company_id": "unit21",
+    "url": "https://www.unit21.ai/",
+    "title": "Agentic AI Platform for Fraud & AML Operations | Unit21",
+    "web_evidence_ref": "turn150view0"
+  },
+  {
+    "company_id": "socure",
+    "url": "https://www.socure.com/",
+    "title": "Identity Verification Platform for AI Risk Decisioning | Socure",
+    "web_evidence_ref": "turn140view0"
+  },
+  {
+    "company_id": "signifyd",
+    "url": "https://www.signifyd.com/",
+    "title": "Signifyd: Commerce Runs on Our Decisions",
+    "web_evidence_ref": "turn151view0"
+  },
+  {
+    "company_id": "riskified",
+    "url": "https://www.riskified.com/",
+    "title": "Fraud prevention and chargeback fraud protection | Riskified",
+    "web_evidence_ref": "turn149view0"
+  },
+  {
+    "company_id": "forter",
+    "url": "https://www.forter.com/",
+    "title": "Forter – Agentic Intelligence you can trust",
+    "web_evidence_ref": "turn143view0"
+  },
+  {
+    "company_id": "sift",
+    "url": "https://sift.com/",
+    "title": "Fraud Prevention Platform for Digital Business | Sift",
+    "web_evidence_ref": "turn141view0"
+  },
+  {
+    "company_id": "sardine",
+    "url": "https://www.sardine.ai/",
+    "title": "Agentic Financial Crime Platform for Fraud Prevention & AML",
+    "web_evidence_ref": "turn152view0"
+  },
+  {
+    "company_id": "rrd",
+    "url": "https://www.rrd.com/",
+    "title": "RRD | Powering brand success, every day.",
+    "web_evidence_ref": "turn162view0"
+  },
+  {
+    "company_id": "quad",
+    "url": "https://www.quad.com/",
+    "title": "Quad MX Solutions: Smarter Marketing, Better Results",
+    "web_evidence_ref": "turn157view0"
+  },
+  {
+    "company_id": "deluxe",
+    "url": "https://www.deluxe.com/",
+    "title": "The Trusted Payments and Data Company - Deluxe",
+    "web_evidence_ref": "turn154view0"
+  },
+  {
+    "company_id": "cenveo",
+    "url": "https://www.cenveo.com/",
+    "title": "Cenveo | Largest Envelope Manufacturer in the United States",
+    "web_evidence_ref": "turn158view0"
+  },
+  {
+    "company_id": "taylor",
+    "url": "https://www.taylor.com/",
+    "title": "Commercial Printing and Print Outsourcing Solutions | Taylor",
+    "web_evidence_ref": "turn163view0"
+  },
+  {
+    "company_id": "lsc",
+    "url": "https://www.lsccom.com/",
+    "title": "Home - LSC Communications",
+    "web_evidence_ref": "turn161view0"
+  },
+  {
+    "company_id": "vistaprint",
+    "url": "https://www.vistaprint.com/",
+    "title": "VistaPrint Official Website: Online Printing Services",
+    "web_evidence_ref": "turn156view0"
+  },
+  {
+    "company_id": "alphagraphics",
+    "url": "https://www.alphagraphics.com/",
+    "title": "Print & Marketing Solutions | AlphaGraphics Corporate",
+    "web_evidence_ref": "turn166view0"
+  },
+  {
+    "company_id": "hibu",
+    "url": "https://hibu.com/",
+    "title": "Digital Marketing for Local Businesses | Hibu",
+    "web_evidence_ref": "turn155view0"
+  },
+  {
+    "company_id": "thomson-reuters",
+    "url": "https://www.thomsonreuters.com/en",
+    "title": "Purpose-built technology | Thomson Reuters",
+    "web_evidence_ref": "turn153view0"
+  }
+]

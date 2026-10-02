@@ -1,0 +1,2 @@
+# Preserve exact bytes so dataset and source hashes survive Windows checkouts.
+* -text

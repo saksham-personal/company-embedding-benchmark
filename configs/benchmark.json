@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "seed": 20261002,
+  "quality": {
+    "cutoffs": [10, 25, 50, 100],
+    "secondary_cutoffs": [10, 20, 50],
+    "search": "exact_float32_cosine"
+  },
+  "performance": {
+    "batch_sizes": [1, 8, 32, 64],
+    "fair_threads": 8,
+    "thread_candidates": [1, 2, 4, 8],
+    "warmup_rounds": 3,
+    "measurement_rounds": 20
+  },
+  "controlled_dataset": {
+    "company_count": 2400,
+    "queries_per_profile": 10
+  }
+}
+

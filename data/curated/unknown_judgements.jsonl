@@ -1,0 +1,6 @@
+{"company_id": "pub-co-hardwoods", "judgment": "unknown", "query_id": "pub-q-0001", "reason": "Required customer or exclusion evidence is missing; not a positive or negative qrel.", "source_refs": ["pub-src-hardwoods"]}
+{"company_id": "pub-co-paxton", "judgment": "unknown", "query_id": "pub-q-0001", "reason": "Required customer or exclusion evidence is missing; not a positive or negative qrel.", "source_refs": ["pub-src-paxton"]}
+{"company_id": "pub-co-heartland", "judgment": "unknown", "query_id": "pub-q-0012", "reason": "Required customer or exclusion evidence is missing; not a positive or negative qrel.", "source_refs": ["pub-src-heartland"]}
+{"company_id": "pub-co-42north", "judgment": "unknown", "query_id": "pub-q-0012", "reason": "Required customer or exclusion evidence is missing; not a positive or negative qrel.", "source_refs": ["pub-src-42north"]}
+{"company_id": "pub-co-socure", "judgment": "unknown", "query_id": "pub-q-0037", "reason": "Required customer or exclusion evidence is missing; not a positive or negative qrel.", "source_refs": ["pub-src-socure"]}
+{"company_id": "pub-co-neterium", "judgment": "unknown", "query_id": "pub-q-0037", "reason": "Required customer or exclusion evidence is missing; not a positive or negative qrel.", "source_refs": ["pub-src-neterium"]}

@@ -45,7 +45,9 @@
           "url": "https://huggingface.co/BAAI/bge-base-en-v1.5/blob/a5beb1e3e68b9ab74eb54cfd186867f64f240e1a/README.md",
           "accessed": "2026-10-02"
         }
-      ]
+      ],
+      "parameter_count": 109482752,
+      "parameter_count_basis": "sum of serialized tensor elements in pinned safetensors header"
     },
     {
       "model_id": "e5-base-v2",
@@ -91,7 +93,9 @@
           "url": "https://huggingface.co/intfloat/e5-base-v2/blob/f52bf8ec8c7124536f0efb74aca902b2995e5bcd/README.md",
           "accessed": "2026-10-02"
         }
-      ]
+      ],
+      "parameter_count": 109482752,
+      "parameter_count_basis": "sum of serialized tensor elements in pinned safetensors header"
     },
     {
       "model_id": "gte-base-en-v1.5",
@@ -137,7 +141,9 @@
           "url": "https://huggingface.co/Alibaba-NLP/gte-base-en-v1.5/blob/a829fd0e060bb84554da0dfd354d0de0f7712b7f/README.md",
           "accessed": "2026-10-02"
         }
-      ]
+      ],
+      "parameter_count": 136776192,
+      "parameter_count_basis": "sum of serialized tensor elements in pinned safetensors header"
     },
     {
       "model_id": "arctic-embed-m-v2",
@@ -184,7 +190,9 @@
           "url": "https://huggingface.co/Snowflake/snowflake-arctic-embed-m-v2.0/blob/95c2741480856aa9666782eb4afe11959938017f/README.md",
           "accessed": "2026-10-02"
         }
-      ]
+      ],
+      "parameter_count": 305368320,
+      "parameter_count_basis": "sum of serialized tensor elements in pinned safetensors header"
     },
     {
       "model_id": "qwen3-embedding-0.6b",
@@ -213,8 +221,9 @@
       },
       "text_convention": {
         "query": {
-          "prefix": "Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery:",
-          "instruction_template": null
+            "prefix": "",
+            "instruction_template": "Instruct: {instruction}\nQuery: {text}",
+            "default_instruction": "Given a web search query, retrieve relevant passages that answer the query"
         },
         "document": {
           "prefix": "",
@@ -232,7 +241,9 @@
           "url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B/blob/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3/README.md",
           "accessed": "2026-10-02"
         }
-      ]
+      ],
+      "parameter_count": 595776512,
+      "parameter_count_basis": "sum of serialized tensor elements in pinned safetensors header"
     },
     {
       "model_id": "embeddinggemma-300m",
@@ -331,7 +342,9 @@
           "url": "https://huggingface.co/voyageai/voyage-4-nano/blob/67fabc9bef010dabc5f6024aa1b1b6b93410426f/README.md",
           "accessed": "2026-10-02"
         }
-      ]
+      ],
+      "parameter_count": 346451968,
+      "parameter_count_basis": "sum of serialized tensor elements in pinned safetensors header"
     },
     {
       "model_id": "nomic-embed-text-v1.5",
@@ -380,7 +393,9 @@
           "url": "https://huggingface.co/nomic-ai/nomic-embed-text-v1.5/blob/e9b6763023c676ca8431644204f50c2b100d9aab/README.md",
           "accessed": "2026-10-02"
         }
-      ]
+      ],
+      "parameter_count": 136731648,
+      "parameter_count_basis": "sum of serialized tensor elements in pinned safetensors header"
     }
   ]
 }

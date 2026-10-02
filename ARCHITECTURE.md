@@ -102,8 +102,9 @@ Each `artifacts[]` entry identifies one redistributable package:
 }
 ```
 
-Unavailable, gated, non-redistributable, or invalid exports are explicit
-records with `status` and `reason`; the downloader skips them visibly.
+Runnable packages use `status: ready`. Unavailable, gated,
+non-redistributable, or invalid exports are explicit records with another
+`status` and a `reason`; the downloader skips them visibly.
 
 ### `configs/variants.json` (benchmark-owned)
 
@@ -173,8 +174,8 @@ an evaluation pool.
   "text": "...",
   "category": "capability_customer_exclusion",
   "constraints": {
-    "must": [{"field": "customer_type", "op": "contains_any", "values": ["wood manufacturer"]}],
-    "must_not": [{"field": "customer_type", "op": "contains_any", "values": ["contractor"]}]
+    "must": [{"field": "customer_type", "op": "contains", "value": "wood manufacturer"}],
+    "must_not": [{"field": "customer_type", "op": "contains", "value": "contractor"}]
   },
   "source_refs": [],
   "judgement_scope": "exhaustive"
@@ -249,15 +250,18 @@ Python/runtime versions, execution providers, and all relevant thread settings.
 
 ## Execution and failure policy
 
-Every command supports `--smoke`, `--dataset`, `--variant`, `--output-dir`, and
-an explicit `--work-dir` suitable for `E:\\Codex\\company-embedding-benchmark`.
+The complete runner supports `--smoke`, `--dataset`, `--variant`, and
+`--output-dir`; download/setup tools support an explicit `--work-dir`.
+Individual command options are documented by `--help`. Paths may point outside
+the repository to a drive with sufficient storage.
 Network access is not required after GitHub Release assets and public dataset
 packages are downloaded and verified. Missing CPU features, gated artefacts,
 licence restrictions, checksum failures, and failed validation produce
 structured `SKIPPED` or `FAILED` records; there are no silent substitutions.
 
-The report generator recommends a model only when comparable VDI quality and
-performance rows exist. Development-machine rows are marked non-decisional.
+The report generator defers an automatic production recommendation. A deployment
+choice requires complete comparable VDI quality and performance evidence plus
+representative company labels. Development-machine rows are marked non-decisional.
 
 ## Validation gates
 

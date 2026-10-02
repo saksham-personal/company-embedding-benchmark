@@ -1,0 +1,140 @@
+{
+  "repository": "saksham-personal/company-embedding-benchmark",
+  "release": "assets-v1",
+  "checked": 21,
+  "failures": [],
+  "assets": [
+    {
+      "name": "arctic-embed-m-v2-onnx-fp32.zip",
+      "size": 1243500260,
+      "digest": "sha256:130cf55167ce0dcd0ded7abd563c731d24cfff4b5550391615aa1d18985a05a1",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/arctic-embed-m-v2-onnx-fp32.zip"
+    },
+    {
+      "name": "arctic-embed-m-v2-onnx-int8.zip",
+      "size": 328316421,
+      "digest": "sha256:79d0d221d758fbf350ed9e204950ae5a9400e0b9acd452bb5ecc5070d22f1d8b",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/arctic-embed-m-v2-onnx-int8.zip"
+    },
+    {
+      "name": "arctic-embed-m-v2-pytorch-fp32.zip",
+      "size": 1238888225,
+      "digest": "sha256:7850fed570eaebe530262b35abec0921f3f8678f37d9924cb399381037da001e",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/arctic-embed-m-v2-pytorch-fp32.zip"
+    },
+    {
+      "name": "beir-scifact.zip",
+      "size": 2816079,
+      "digest": "sha256:536e14446a0ba56ed1398ab1055f39fe852686ecad24a6306c80c490fa8e0165",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/beir-scifact.zip"
+    },
+    {
+      "name": "bge-base-en-v1.5-onnx-fp32.zip",
+      "size": 436854056,
+      "digest": "sha256:a1eed390f226f3b679cbb60e53f9ff2704703dca7efa2229cc2b319ce7f5ede1",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/bge-base-en-v1.5-onnx-fp32.zip"
+    },
+    {
+      "name": "bge-base-en-v1.5-onnx-int8.zip",
+      "size": 110664920,
+      "digest": "sha256:f8a2227ea90141f88467b74d36e4fd45ec4e20247930a7581cd46fd9c9d48b38",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/bge-base-en-v1.5-onnx-int8.zip"
+    },
+    {
+      "name": "bge-base-en-v1.5-pytorch-fp32.zip",
+      "size": 438998035,
+      "digest": "sha256:bf0553a51bf05d046cd0da2be2d7bf801bb53b46f4c53a683fd2a12d20aeb00b",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/bge-base-en-v1.5-pytorch-fp32.zip"
+    },
+    {
+      "name": "e5-base-v2-onnx-fp32.zip",
+      "size": 436826686,
+      "digest": "sha256:3077609ad7f0ba70892f7a8d1b6b53bdbea75420332072bbd37289aa2ec4665b",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/e5-base-v2-onnx-fp32.zip"
+    },
+    {
+      "name": "e5-base-v2-onnx-int8-avx512-vnni.zip",
+      "size": 111137200,
+      "digest": "sha256:0966b2bbdd218393bb2cebe13a8bf55741c35daa28a866234835d49d32124f23",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/e5-base-v2-onnx-int8-avx512-vnni.zip"
+    },
+    {
+      "name": "e5-base-v2-pytorch-fp32.zip",
+      "size": 438970688,
+      "digest": "sha256:fb4c3cd378a0152b8d6a2b9127288989588b4153bfa2e7d039fe6a9091c92060",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/e5-base-v2-pytorch-fp32.zip"
+    },
+    {
+      "name": "gte-base-en-v1.5-onnx-fp32.zip",
+      "size": 556955191,
+      "digest": "sha256:65327ac519c150c7669cfdc8724ff58ce8ef990e47389e6f55ee1bbf6de4d01d",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/gte-base-en-v1.5-onnx-fp32.zip"
+    },
+    {
+      "name": "gte-base-en-v1.5-onnx-int8.zip",
+      "size": 147641606,
+      "digest": "sha256:3138ec55dec2fc6722736b8703dd1fc0654101580e74c1c50c248e32f296c2e4",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/gte-base-en-v1.5-onnx-int8.zip"
+    },
+    {
+      "name": "gte-base-en-v1.5-pytorch-fp32.zip",
+      "size": 548219754,
+      "digest": "sha256:1a89f1c754b7220b0798c5b89507ee1e5b1a97c60784d15a76d3ff1863b7981a",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/gte-base-en-v1.5-pytorch-fp32.zip"
+    },
+    {
+      "name": "llama-b11146-bin-win-cpu-x64.zip",
+      "size": 18560055,
+      "digest": "sha256:14cf1303ca9ac3abd94816850532f9f9a69ac66fbaca3776fc6f9061c2fac1d1",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/llama-b11146-bin-win-cpu-x64.zip"
+    },
+    {
+      "name": "nomic-embed-text-v1.5-gguf-q4_k_m.zip",
+      "size": 85248563,
+      "digest": "sha256:e830169cf7b061e3ddbd0b66aef3360e9ca0459f318bd7052fe139b0fc16bf9a",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/nomic-embed-text-v1.5-gguf-q4_k_m.zip"
+    },
+    {
+      "name": "nomic-embed-text-v1.5-onnx-int8.zip",
+      "size": 138438188,
+      "digest": "sha256:3ca9b1df6dad18b00acefa1698418f40b39848810c6c28df4ec7758c0920ba5f",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/nomic-embed-text-v1.5-onnx-int8.zip"
+    },
+    {
+      "name": "nomic-embed-text-v1.5-pytorch-fp32.zip",
+      "size": 548080055,
+      "digest": "sha256:4a083e45d8d64ffcc9627e185589fbf1e862ab151c739af7d76968bf71644029",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/nomic-embed-text-v1.5-pytorch-fp32.zip"
+    },
+    {
+      "name": "qwen3-embedding-0.6b-onnx-int8.zip",
+      "size": 629441981,
+      "digest": "sha256:d9726da2662a739a73037a2cae78fc3e1a8ef73368671c6cee5f806bd4086e1d",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/qwen3-embedding-0.6b-onnx-int8.zip"
+    },
+    {
+      "name": "qwen3-embedding-0.6b-pytorch-reference.zip",
+      "size": 1207500835,
+      "digest": "sha256:b82e7d88e051062fdbf9b427a590e259aae5df99fccfd3b7489a90fc600cff6b",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/qwen3-embedding-0.6b-pytorch-reference.zip"
+    },
+    {
+      "name": "scifact-LICENSE.md",
+      "size": 542,
+      "digest": "sha256:56ee69bc639cbab8f0b2e4b67091ec5e9390aa99a1d65f0a35e4274686c9a806",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/scifact-LICENSE.md"
+    },
+    {
+      "name": "voyage-4-nano-onnx-int8.zip",
+      "size": 433422614,
+      "digest": "sha256:0d9ea4d4ebd722c7ec426b05c637d23708c210b7668e3c6fa7262414d2ebbe78",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/voyage-4-nano-onnx-int8.zip"
+    },
+    {
+      "name": "voyage-4-nano-pytorch-reference.zip",
+      "size": 704447452,
+      "digest": "sha256:9509a60510402056e8908e891bc3da36349efb62747b812eae323e5336d7c34f",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/voyage-4-nano-pytorch-reference.zip"
+    }
+  ]
+}
