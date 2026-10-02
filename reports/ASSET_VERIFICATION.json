@@ -1,9 +1,9 @@
 {
   "repository": "saksham-personal/company-embedding-benchmark",
   "release": "assets-v1",
-  "generated_at": "2026-10-02T15:07:32.025726+00:00",
-  "verification": "GitHub server-computed digest against pinned manifests; runtime, environment and license sizes checked",
-  "checked": 23,
+  "generated_at": "2026-10-02T16:06:20.705446+00:00",
+  "verification": "GitHub server-computed digest against pinned manifests and completed kit/checksum bytes; runtime, environment, license and kit sizes checked",
+  "checked": 25,
   "failures": [],
   "assets": [
     {
@@ -49,6 +49,12 @@
       "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/bge-base-en-v1.5-pytorch-fp32.zip"
     },
     {
+      "name": "company-embedding-benchmark-kit-v1.zip",
+      "size": 1656207,
+      "digest": "sha256:11a72ff883b80f4c1bde89619c09d6511163aec7309485ee8149d9a7c9c11a3e",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/company-embedding-benchmark-kit-v1.zip"
+    },
+    {
       "name": "e5-base-v2-onnx-fp32.zip",
       "size": 436826686,
       "digest": "sha256:3077609ad7f0ba70892f7a8d1b6b53bdbea75420332072bbd37289aa2ec4665b",
@@ -83,6 +89,12 @@
       "size": 548219754,
       "digest": "sha256:1a89f1c754b7220b0798c5b89507ee1e5b1a97c60784d15a76d3ff1863b7981a",
       "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/gte-base-en-v1.5-pytorch-fp32.zip"
+    },
+    {
+      "name": "KIT_SHA256.txt",
+      "size": 106,
+      "digest": "sha256:6b994b2edc788d390da43378218a655441891190a35d1d9e0f7da956a628aeea",
+      "browser_download_url": "https://github.com/saksham-personal/company-embedding-benchmark/releases/download/assets-v1/KIT_SHA256.txt"
     },
     {
       "name": "llama-b11146-bin-win-cpu-x64.zip",

@@ -1,0 +1,25 @@
+{
+  "kind": "completed_kit_delivery",
+  "repository": "saksham-personal/company-embedding-benchmark",
+  "release": "assets-v1",
+  "archive": "company-embedding-benchmark-kit-v1.zip",
+  "archive_sha256": "11a72ff883b80f4c1bde89619c09d6511163aec7309485ee8149d9a7c9c11a3e",
+  "archive_size_bytes": 1656207,
+  "archive_commit": "02eceb040bfad9a9186c40e62a3e05d362fcf037",
+  "source_digest": "cf1aa346ee12583a6587ab8489896972427497d70743c61d4693ac9bc134bbb2",
+  "verification": "Fresh GitHub kit/checksum download; SHA-256, CRC, safe extraction, exact source bytes, catalog counts and curated dataset validator passed",
+  "source_tree_snapshot_assets": 23,
+  "final_online_release_assets": 25,
+  "archive_snapshot_note": "The source ZIP precedes this final delivery record and the online asset-verification refresh. Its code and dataset source digests are unchanged.",
+  "variants_configured": 25,
+  "model_packages": 19,
+  "quality_measurements": 18,
+  "short_cpu_diagnostic_runs": 2,
+  "regression_tests_passed": 37,
+  "deferred": [
+    "Arctic/Qwen/Voyage/Nomic full conformance and retrieval",
+    "Full SciFact retrieval",
+    "VDI performance matrix",
+    "Licensed PitchBook transfer evaluation"
+  ]
+}
